@@ -88,7 +88,7 @@ private Connection connection;
 			e.printStackTrace();
 		}
 		ProjectCareerList.getInstance().setProjectCareerList(retProjectCareerList);
-		System.out.println("과제 이력 로드 완료");
+		System.out.println("과제 이력 load 완료");
 		return ;
 	}
 	

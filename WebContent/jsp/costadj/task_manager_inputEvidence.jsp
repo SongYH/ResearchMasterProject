@@ -32,10 +32,10 @@
 				name="evidence_amount" value="" size=20 
 				OnKeydown="return showKeyCode(event)"> <input type=button
 				value="사업비 집행금액 입력" onClick="evidenceInputCheck()"><br>
-
 		</form>
 	</div>
 </BODY>
+
 <script>
         function showKeyCode(event) {
             event = event || window.event;

@@ -28,7 +28,7 @@ function logincheck(){
 	<form method="post" action="loginCheck.jsp" name=userLogin>
 		<table style="margin: 0 auto;" >
 			<tr><td><input type="text" name="userId"placeholder="아이디"></td></tr>
-			<tr><td><input type="text" name="userPw"placeholder="비밀번호"></td></tr>
+			<tr><td><input type="password" name="userPw"placeholder="비밀번호"></td></tr>
 			<tr><td><input type=button value="로그인" onClick="logincheck()"></td></tr>
 		</table>
 	</form>

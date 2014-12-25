@@ -1,14 +1,6 @@
-function calculationInputCheck() {
-	document.calculationInput.action = "control_input_calculate.jsp";
-	document.calculationInput.method = "post";
-	document.calculationInput.submit();
-}
 
-function calculationControlCheck() {
-	document.calculationControl.action = "resultCalculation.jsp";
-	document.calculationControl.method = "post";
-	document.calculationControl.submit();
-}
+
+
 
 function searchCalculation() {
 	if (document.searchCalculate.select_project_number.value == "") {

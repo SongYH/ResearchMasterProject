@@ -7,8 +7,6 @@
 <HEAD>
 <TITLE>사업비정산입력 beans</TITLE>
 </HEAD>
-<script language=JavaScript src="../../js/calculation/calculation.js"></script>
-
 <BODY>
 <%@include file="/jsp/common/Main.jsp"%>
 	<%
@@ -37,4 +35,11 @@
 			value=<%=selectProjectNumber%>>
 	</form>
 </BODY>
+<script type="text/javascript">
+function calculationInputCheck() {
+	document.calculationInput.action = "control_input_calculate.jsp";
+	document.calculationInput.method = "post";
+	document.calculationInput.submit();
+}
+</script>
 </HTML>

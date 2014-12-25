@@ -9,7 +9,6 @@
 <HEAD>
 <TITLE>사업비증거입력 완료 beans</TITLE>
 </HEAD>
-<script language=JavaScript src="../../js/calculation/evidence.js"></script>
 
 <BODY>
 	<%@include file="/jsp/common/Main.jsp"%>
@@ -42,4 +41,38 @@
 		</form>
 	</div>
 </BODY>
+<script>
+        function showKeyCode(event) {
+            event = event || window.event;
+            var keyID = (event.which) ? event.which : event.keyCode;
+            if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46
+            		|| keyID == 37 || keyID == 39)
+            {
+                return;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        
+        function evidenceInputCheck() {
+        	if (document.evidenceInput.evidence_amount.value == "") {
+        		alert("집행금액을 입력하세요.");
+        		document.evidenceInput.evidence_amount.focus();
+        		return;
+        	}
+
+        	document.evidenceInput.action = "control_inputEvidence.jsp";
+        	document.evidenceInput.method = "post";
+        	document.evidenceInput.submit();
+        }
+
+        function evidenceControlCheck() {
+
+        	document.evidenceControl.action = "task_manager_evidenceResult.jsp";
+        	document.evidenceControl.method = "post";
+        	document.evidenceControl.submit();
+        }
+ </script>
 </HTML>

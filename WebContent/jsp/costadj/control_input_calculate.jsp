@@ -9,7 +9,6 @@
 <HEAD>
 <TITLE>정산 control</TITLE>
 </HEAD>
-<script language=JavaScript src="../../js/calculation/calculation.js"></script>
 <BODY onload="calculationControlCheck()">
 	<%
 		request.setCharacterEncoding("UTF-8");
@@ -53,4 +52,11 @@
 			value=<%=selectProjectNumber%>>
 	</form>
 </BODY>
+<script type="text/javascript">
+function calculationControlCheck() {
+	document.calculationControl.action = "resultCalculation.jsp";
+	document.calculationControl.method = "post";
+	document.calculationControl.submit();
+}
+</script>
 </HTML>

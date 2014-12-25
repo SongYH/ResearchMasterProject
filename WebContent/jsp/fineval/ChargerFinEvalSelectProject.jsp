@@ -13,24 +13,11 @@
 <script language="javascript">
 function checkInput(chargerProjectList)
 {
-	var result=false;
-	var radioBtn = chargerProjectList.rd;
-	for(var i=0; i<radioBtn.length; i++)
-	{
-		if(radioBtn[i].checked==true)
-		{	result = true;	break; }
-	}
 	
-	if(!result)
-	{ 
-		alert("과제를 선택하세요!");
-	}
-	else
-	{
 		document.chargerProjectList.action="/ResearchMasterProject/jsp/fineval/ChargerFinEvalSelectExpert.jsp";
 		document.chargerProjectList.method="post";
 		document.chargerProjectList.submit();
-	}
+	
 }
 </script>
 
@@ -39,32 +26,17 @@ function checkInput(chargerProjectList)
 <%@include file="/jsp/common/Main.jsp"%>
 <% 
 	request.setCharacterEncoding("UTF-8");
+	
 	ArrayList<Project> proList = new ArrayList<Project>();
 	FinEvalManager finManager = new FinEvalManager();
 	proList = finManager.requestProjectsForCharger();
 	
-	/*
-	ArrayList<String> test = new ArrayList<String>();
-
-	Project a1 = new Project("정산", "장기", "모바일", 1, "sunmin1"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName1", test);
-	Project a2 = new Project("중간평가", "단기", "임베", 2, "sunmin2"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName2", test);
-	Project a3 = new Project("중간평가", "장기", "모바일", 3, "sunmin3"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName3", test);
-	Project a4 = new Project("정산", "장기", "임베", 4, "sunmin4"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName4", test);
-	Project a5 = new Project("신청", "장기", "모바일", 5, "sunmin5"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName5", test);
-	Project a6 = new Project("등록", "장기", "모바일", 6, "sunmin6"
-			, "최선민", "abc", "금오공대", new Date(), 2014, "fileName6", test);
-	
-	proList.add(a1); proList.add(a2); proList.add(a3); 
-	proList.add(a4); proList.add(a5); proList.add(a6);
-	*/
 %>
 <div id="contents">
 	<form method="post" name="chargerProjectList" action="/ResearchMasterProject/jsp/fineval/ChargerFinEvalSelectExpert.jsp">
+		<%if(proList.size()==0){ %>
+			<h2>정산완료 프로젝트가 없습니다.</h2>
+			<%}else{ %>
 		<table>
 			<tr>
 				<td></td><td>번호</td><td>기관명</td><td>상태</td><td>종류</td><td>분야</td><td>책임자</td>
@@ -86,6 +58,7 @@ function checkInput(chargerProjectList)
 				<td align="center"><input type="reset" name="reset" value="다시작성" /></td>
 			</tr>
 		</table>
+		<%} %>
 	</form>
 </div>
 </body>

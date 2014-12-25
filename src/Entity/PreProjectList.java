@@ -42,8 +42,21 @@ public class PreProjectList {
 		}
 		return result;
 	}
+	
+	public ArrayList<PreProject> getStatuspreProjectList(String status){
+		// 상태가 선정된 과제
+		ArrayList<PreProject> result = new ArrayList<PreProject>();
+		
+		for(int i = 0; i < preProjectList.size(); i++){
+			if(preProjectList.get(i).getStatus().equals(status)){
+				result.add(preProjectList.get(i));
+			}
+		}
+		return result;
+	}
 	public boolean setPreProjectStatu(int num, String status)
 	{
+		System.out.println(num + "  " + status + " 리스트");
 		for (PreProject p : preProjectList)
 		{
 			if (p.getProjectNumber() == num)

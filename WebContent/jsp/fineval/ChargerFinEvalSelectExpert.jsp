@@ -9,6 +9,19 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>평가계획 수립</title>
 <script language="javascript">
+function showKeyCode(event) {
+    event = event || window.event;
+    var keyID = (event.which) ? event.which : event.keyCode;
+    if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46
+          || keyID == 37 || keyID == 39)
+    {
+        return;
+    }
+    else
+    {
+        return false;
+    }
+}
 function checkInput(chargerExpertList)
 {
 	var result = false;
@@ -54,25 +67,6 @@ function checkInput(chargerExpertList)
 	ArrayList<Expert> expertList = new ArrayList<Expert>();
 	FinEvalManager finManager = new FinEvalManager();
 	expertList = finManager.requestExpertsForCharger(selProjectNum);
-
-	/*
-	Expert a1 = new Expert(1, "expert1", "abc", "전문가1", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-	Expert a2 = new Expert(2, "expert2", "abc", "전문가2", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-	Expert a3 = new Expert(3, "expert3", "abc", "전문가3", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-	Expert a4 = new Expert(4, "expert4", "abc", "전문가4", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-	Expert a5 = new Expert(5, "expert5", "abc", "전문가5", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-	Expert a6 = new Expert(6, "expert6", "abc", "전문가6", "123123", "0100404", "경기도", "서울", "금오공대", "대리", 
-			"552-5252", "sunmin204@naver.com", "모바일");
-
-	expertList.add(a1); expertList.add(a2); expertList.add(a3); 
-	expertList.add(a4); expertList.add(a5); expertList.add(a6); 
-	
-	*/
 	
 %>
 <div id="contents">
@@ -96,7 +90,7 @@ function checkInput(chargerExpertList)
 				<td>첨부파일</td><td colspan="3"><input type = "text" name = "inputFile"></input></td>
 			</tr>
 			<tr>
-				<td>통보날짜</td><td><input type = "text" name = "inputYear" size=3></input></td><td><input type = "text" name = "inputMonth" size=3></input></td><td><input type = "text" name = "inputDate" size=3></input></td>
+				<td>통보날짜</td><td><input type = "text" name = "inputYear" OnKeydown="return showKeyCode(event)" size=3></input></td><td><input type = "text" name = "inputMonth" OnKeydown="return showKeyCode(event)" size=3></input></td><td><input type = "text" name = "inputDate" OnKeydown="return showKeyCode(event)" size=3></input></td>
 			</tr>
 			<tr>
 				<td><input type = "text" name = "projectNum" value ="<%=selProjectNum%>" style="display: none" ></input></td>

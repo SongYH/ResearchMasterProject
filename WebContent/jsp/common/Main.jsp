@@ -34,6 +34,7 @@ if (loginId != null)
 			</li>
 			<li><a href="#">과제평가</a>
 				<ul>
+					<li><a href="/ResearchMasterProject/jsp/selecteval/PageSearchSelect.jsp" >선정평가</a></li>
 					<li><a href="#" >중간평가</a></li>
 					<li><a href="/ResearchMasterProject/jsp/fineval/ChargerFinEvalSelectProject.jsp" >최종평가</a></li>
 					<li><a href="#" >중간평가결과조회</a></li>

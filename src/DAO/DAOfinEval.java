@@ -75,7 +75,6 @@ public class DAOfinEval
 		}
 
 		FinEvalPlanList.getInstance().setPlanList(retFinPlanList);
-		System.out.println("최종평가계획 로드 완료");
 	}
 	
 	public void loadResultList()
@@ -105,7 +104,6 @@ public class DAOfinEval
 		}
 
 		FinEvalResultList.getInstance().setResultList(retFinResultList);
-		System.out.println("최종평가결과 로드 완료");
 	}
 	
 	
@@ -123,6 +121,15 @@ public class DAOfinEval
 		StringBuilder queryBuilder = new StringBuilder();
 		try
 		{
+			if(saveList.size() == 0)
+			{
+				queryBuilder.delete(0, queryBuilder.length());
+				queryBuilder.append("TRUNCATE TABLE final_eval_plan;");
+				String query = queryBuilder.toString();
+				PreparedStatement pstmt = connection.prepareStatement(query);
+				pstmt.executeUpdate();
+			}
+			else{
 			for(FinEvalPlan x : saveList)
 			{
 				queryBuilder.delete(0, queryBuilder.length());
@@ -135,6 +142,8 @@ public class DAOfinEval
 				String query = queryBuilder.toString();
 				
 				PreparedStatement pstmt = connection.prepareStatement(query);
+				
+				System.out.println(x.getProjectNumber() + "  " + x.getProjectLeaderEmail());
 				
 				pstmt.setInt(1, x.getProjectNumber());
 				pstmt.setString(2, x.getExpertLeaderId());
@@ -163,14 +172,14 @@ public class DAOfinEval
 				pstmt.executeUpdate();
 				pstmt.close();
 			}
+			}
 		}
 		
 		catch(SQLException e)
 		{
-			System.out.println("최종평가계획 DB저장 실패....");
 			e.printStackTrace();
 		}
-		System.out.println("최종평가계획 DB저장 성공");
+		
 		return true;
 	}
 	
@@ -179,6 +188,7 @@ public class DAOfinEval
 		ArrayList<FinEvalResult> saveList = FinEvalResultList.getInstance().getAllList();
 		
 		StringBuilder queryBuilder = new StringBuilder();
+		
 		try
 		{
 			for(FinEvalResult x : saveList)
@@ -210,11 +220,9 @@ public class DAOfinEval
 		
 		catch(SQLException e)
 		{
-			System.out.println("최종평가목록 DB저장 실패...");
 			e.printStackTrace();
 		}
 		
-		System.out.println("최종평가목록 DB저장 성공!");
 		return true;
 	}
 }

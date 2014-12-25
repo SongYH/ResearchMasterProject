@@ -39,6 +39,7 @@ public class SubjectManager {
 	// 과제 상태 변경 (과제번호 / 상태)
 	public boolean setChangePreProjectStatus(int num, String state)
 	{
+		System.out.println(num + "  " + state);
 		PreProjectList preprojectList = PreProjectList.getInstance();
 		if (preprojectList.setPreProjectStatu(num, state))
 			return true;
@@ -65,6 +66,12 @@ public class SubjectManager {
 		return f.getStatuspreProjectList(id, status);
 	}
 	
+	//영호가 추가함
+	public ArrayList<PreProject> request_PreProjectList_state(String status){ 
+		// 신청과제
+		PreProjectList f = PreProjectList.getInstance();
+		return f.getStatuspreProjectList(status);
+	}
 	public int request_organId(String id){
 		
 		UserManage um = new UserManage();

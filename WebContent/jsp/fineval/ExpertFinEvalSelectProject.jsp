@@ -14,24 +14,11 @@
 <script language="javascript">
 function checkInput(expertProjectList)
 {
-	var result=false;
-	var radioBtn = expertProjectList.rd;
-	for(var i=0; i<radioBtn.length; i++)
-	{
-		if(radioBtn[i].checked==true)
-		{	result = true;	break; }
-	}
 	
-	if(!result)
-	{ 
-		alert("과제를 선택하세요!");
-	}
-	else
-	{
 		document.expertInput.action="/ResearchMasterProject/jsp/fineval/ExpertFinEvalInput.jsp";
 		document.expertInput.method="post";
 		document.expertInput.submit();
-	}
+	
 }
 </script>
 
@@ -45,8 +32,7 @@ function checkInput(expertProjectList)
 	
 	FinEvalManager finEvalManager = new FinEvalManager();
 	ArrayList<FinEvalPlan> finEvalPlan = new ArrayList<FinEvalPlan>();
-	String id = (String)session.getAttribute("loginId");
-	finEvalPlan = finEvalManager.requestFinEvalPlanForExpert(id);
+	finEvalPlan = finEvalManager.requestFinEvalPlanForExpert(loginId);
 	ArrayList<Integer> proNums = new ArrayList<Integer>();
 	
 	for(int i=0; i<finEvalPlan.size(); i++)
@@ -61,6 +47,9 @@ function checkInput(expertProjectList)
 %>
 <div id="contents">
 	<form method="post" name="expertInput" action="/ResearchMasterProject/jsp/fineval/ExpertFinEvalInput.jsp">
+		<%if(proList.size()==0){ %>
+			<h2>평가할 프로젝트가 없습니다.</h2>
+			<%}else{ %>
 		<table>
 			<tr>
 				<td></td><td>번호</td><td>기관명</td><td>상태</td><td>종류</td><td>분야</td><td>책임자</td>
@@ -82,6 +71,7 @@ function checkInput(expertProjectList)
 				<td><input type="reset" name="reset" value="다시작성" /></td>
 			</tr>
 		</table>
+		<%} %>
 	</form>
 </div>
 </body>

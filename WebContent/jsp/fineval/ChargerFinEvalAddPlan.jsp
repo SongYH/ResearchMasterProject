@@ -52,9 +52,13 @@
 	
 	FinEvalManager finManager = new FinEvalManager();
 	
-	boolean test = finManager.requestAddFinEvalPlan(selProjectNum, expertLeaderId, expertLeaderEmail, expertsEmail, fileName, noticeDate);
+	boolean result = finManager.requestAddFinEvalPlan(selProjectNum, expertLeaderId, expertLeaderEmail, expertsEmail, fileName, noticeDate);
 	
-	//response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");
 %>
+<% if(result){%>
+	<h2>평가계획추가 완료</h2>
+  <%}else{ %>
+  	<h2>평가계획추가 실패</h2>
+  	<%} %>
 </body>
 </html>

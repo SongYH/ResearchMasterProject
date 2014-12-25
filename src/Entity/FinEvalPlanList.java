@@ -22,6 +22,9 @@ public class FinEvalPlanList
 		static final FinEvalPlanList uniqueInstance = new FinEvalPlanList();
 	}
 
+	private FinEvalPlanList()
+	{
+	}
 	public static FinEvalPlanList getInstance()
 	{
 		return FinEvalPlanListHolder.uniqueInstance;
@@ -36,11 +39,21 @@ public class FinEvalPlanList
 	public boolean addFinEvalPlan(FinEvalPlan finEvalPlan)
 	{
 		planList.add(finEvalPlan);
-		//System.out.println(finEvalPlan.getExpertsEmail().get(0));
-		//System.out.println(finEvalPlan.getExpertsEmail().get(1));
-		//System.out.println(finEvalPlan.getExpertsEmail().get(2));
 		return true;
 	}
+	public boolean deleteFinEvalPlan(int projectNum)
+	{
+		for(int i=0; i<planList.size(); i++)
+		{
+			if(planList.get(i).getProjectNumber() == projectNum)
+			{
+				planList.remove(i);
+				return true;
+			}
+		}
+		return false;
+	}
+	
 	public ArrayList<FinEvalPlan> getFinEvalPlanListForEval(String id)
 	{
 		ArrayList<FinEvalPlan> result = new ArrayList<FinEvalPlan>();

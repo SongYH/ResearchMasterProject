@@ -20,6 +20,9 @@ public class FinEvalResultList
 		static final FinEvalResultList uniqueInstance = new FinEvalResultList();
 	}
 
+	private FinEvalResultList()
+	{
+	}
 	public static FinEvalResultList getInstance()
 	{
 		return FinEvalResultListHolder.uniqueInstance;

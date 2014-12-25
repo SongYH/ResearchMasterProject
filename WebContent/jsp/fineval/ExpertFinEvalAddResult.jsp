@@ -17,9 +17,13 @@
 	
 	FinEvalManager finManager = new FinEvalManager();
 	
-	//finManager.requestAddFinEvalResult(projectNum, result, fileName);
+	boolean inputResult = finManager.requestAddFinEvalResult(projectNum, result, fileName);
 	
-	response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");
 %>
+<% if(inputResult){%>
+	<h2>평가결과추가 완료</h2>
+  <%}else{ %>
+  	<h2>평가결과추가 실패</h2>
+  	<%} %>
 </body>
 </html>

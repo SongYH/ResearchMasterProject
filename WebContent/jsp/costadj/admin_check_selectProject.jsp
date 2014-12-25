@@ -11,6 +11,7 @@
 <script language=JavaScript src="../../js/calculation/calculation.js"></script>
 <BODY>
 
+<%@include file="/jsp/common/Main.jsp"%>
 	<%
 		ProjectList pl = ProjectList.getInstance();			// 과제관리 객체를 생성한다 
 		ProjectManager pm = new ProjectManager();

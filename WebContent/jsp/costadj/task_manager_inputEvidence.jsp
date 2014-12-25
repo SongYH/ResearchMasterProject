@@ -20,20 +20,23 @@
 		ProjectManager pm = new ProjectManager(); // 과제관리 객체 생성
 		Budget bg = pm.reqBudgetSearchNumber(selectProjectNumber); // 사업비 예산정보를 과제번호를 통해 요청
 	%>
-	<form name=evidenceInput method=post action="evidence.js">
-		<input type=hidden name="select_project_number"
-			value=<%=selectProjectNumber%>>
+	<div>
+		<form name=evidenceInput method=post action="evidence.js">
+			<input type=hidden name="select_project_number"
+				value=<%=selectProjectNumber%>>
 
-		<h3>사업비 증거자료 입력 beans</h3>
-		선택된 과제번호 :
-		<%=selectProjectNumber%>
-		<br> 사업비예산 신청액 :
-		<%=bg.getAmount()%>
-		<br> <input type="file" name="upfile" size="20">(파일의 용량
-		제한 : 20M) <br> 사업비 총 집행금액 : <input type=text
-			name="evidence_amount" value="" size=20> <input type=button
-			value="사업비 집행금액 입력" onClick="evidenceInputCheck()"><br>
+			<h3>사업비 증거자료 입력 beans</h3>
+			선택된 과제번호 :
+			<%=selectProjectNumber%>
+			<br> 사업비예산 신청액 :
+			<%=bg.getAmount()%>
+			<br> <input type="file" name="upfile" size="20">(파일의 용량
+			제한 : 20M) <br> 사업비 총 집행금액 : <input type=text
+				name="evidence_amount" value="" size=20> <input type=button
+				value="사업비 집행금액 입력" onClick="evidenceInputCheck()"
+				OnKeypress="onlyNumber()"><br>
 
-	</form>
+		</form>
+	</div>
 </BODY>
 </HTML>

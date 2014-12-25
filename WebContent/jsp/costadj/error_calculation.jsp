@@ -36,6 +36,24 @@
 					조회된 데이터가 없습니다.
 			<%
 		}
+		else if(error_msg.equals("CA005"))
+		{
+			%>
+				 진행중인 과제가 없습니다.
+			<%
+		}
+		else if(error_msg.equals("CA006"))
+		{
+			%>
+				정산결과가 입력되지않았습니다.
+			<%
+		}
+		else if(error_msg.equals("CA007"))
+		{
+			%>
+				로그인후 이용해주세요.
+			<%
+		}
 %>
 </body>
 </html>

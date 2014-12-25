@@ -7,22 +7,27 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<% 	request.setCharacterEncoding("UTF-8");
-		String id = (String)session.getAttribute("loginId");
-	//String id = request
-		//.getParameter("id");			// 로그인되어있는 id를 가져옴
-		PermissionManager perm = new PermissionManager();		// 권한을 확인하기위한 권한관리객체 생성
-		String actor = perm.confirmUserPermission(id);			// 권한을 아이디를 통해 가져옴 
-	 if(actor.equals("정산담당자"))		// 정산담당자 일때
-		{
-			response.sendRedirect("input_calculation_selectProject.jsp");	// 사업비 정산입력 화면으로 갱신
+	<%
+		request.setCharacterEncoding("UTF-8");
+		String id = null;
+		id = (String) session.getAttribute("loginId"); // 아이디 가져오기
+		if (id != null) {
+			id = new String(id.getBytes("8859_1"), "UTF-8"); // 로그인 되어있는 id
+			//String id = request
+			//.getParameter("id");			// 로그인되어있는 id를 가져옴
+			PermissionManager perm = new PermissionManager(); // 권한을 확인하기위한 권한관리객체 생성
+			String actor = perm.confirmUserPermission(id); // 권한을 아이디를 통해 가져옴 
+			if (actor.equals("정산담당자")) // 정산담당자 일때
+			{
+				response.sendRedirect("input_calculation_selectProject.jsp"); // 사업비 정산입력 화면으로 갱신
+			} else {
+				response.sendRedirect("error_calculation.jsp?error_msg=CA002"); // 사업비 정산담당자가 아니면 에러화면으로 갱신 
+			}
 		}
-	 else
-	 {
-			response.sendRedirect("error_calculation.jsp?error_msg=CA002");	// 사업비 정산담당자가 아니면 에러화면으로 갱신 
-	 }
-		
-%>
+
+		else
+			response.sendRedirect("error_calculation.jsp?error_msg=CA007"); // 로그인을 요청하는 에러페이지
+	%>
 
 </body>
 </html>

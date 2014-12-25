@@ -57,7 +57,7 @@ public class DAObudgetCareer {
 		}
 		
 		BudgetCareerList.getInstance().setBudgetCareerList(retBudgetCareerList);
-		
+		System.out.println("예산이력 로드 완료");
 		return ;
 	}
 	
@@ -89,9 +89,13 @@ public class DAObudgetCareer {
 				PreparedStatement pstmt = connection.prepareStatement(query);
 				
 				pstmt.setDate(1, new java.sql.Date(x.getRecordDate().getTime()));
-				
 				pstmt.setInt(2, (x.getBudgetInfo()).getProjectNumber());
 				pstmt.setInt(3, (x.getBudgetInfo()).getAmount());
+				
+				//수정
+				pstmt.setDate(4, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setInt(5, (x.getBudgetInfo()).getProjectNumber());
+				pstmt.setInt(6, (x.getBudgetInfo()).getAmount());
 				
 				pstmt.executeUpdate();
 				pstmt.close();	
@@ -100,9 +104,10 @@ public class DAObudgetCareer {
 		
 		catch(SQLException e)
 		{
+			System.out.println("예산이력 DB저장 실패...");
 			e.printStackTrace();
 		}
-		
+		System.out.println("예산이력 DB저장 성공");
 		return true;
 	}
 	

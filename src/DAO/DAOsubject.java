@@ -54,6 +54,7 @@ public class DAOsubject {
 		}
 		
 		SubjectList.getInstance().setSubjectList(retUserList);
+		System.out.println("공고과제 subject 로드 완료");
 	}
 	
 	/**

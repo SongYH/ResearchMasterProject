@@ -51,18 +51,15 @@ public class DAOproject
 				int agreeYear = result.getInt("agreeYear");
 				String fileName = result.getString("fileName");
 
-				System.out.println(projectNumber);
 				
 				// User 정보에서 해당 과제에 대한 참여연구원 아이디 가져오기
 				ArrayList<String> userIdList = new ArrayList<String>();
 				// 프로젝트 번호로 ID 가져오기
 				String sqlQuery2 = "SELECT userId FROM project_user where projectNumber ='" + projectNumber + "';";
-				System.out.println(sqlQuery2);
 				PreparedStatement pstmt2 = connection.prepareStatement(sqlQuery2);
 				ResultSet result2 = pstmt2.executeQuery();
 				while (result2.next())
 				{
-					System.out.println("송영호");
 					String id = result2.getString("userId");
 					userIdList.add(id);
 				}
@@ -80,6 +77,7 @@ public class DAOproject
 		}
 
 		ProjectList.getInstance().setProjectList(retProjectList);
+		System.out.println("과제목록 로드 완료");
 	}
 
 	/**
@@ -137,13 +135,11 @@ public class DAOproject
 				pstmt.setDate(22, new java.sql.Date(x.getRegisterDate().getTime()));
 				pstmt.setInt(23, x.getAgreeYear());
 				pstmt.setString(24, x.getFileName());
-				System.out.println("송영호1");
 				pstmt.executeUpdate();
 				// 사용자와 과제 묶기
 				if (x.getUserIdList().size() > 0) 
 				{
 					int projectNum = x.getProjectNumber();
-					System.out.println("송영호" + projectNum);
 					for (String t : x.getUserIdList()) 
 					{
 						queryProjectUser.delete(0, queryProjectUser.length());

@@ -51,6 +51,7 @@ public class DAOpermission
 		}
 		
 		PermissionList.getInstance().setList(retPermissionList);
+		System.out.println("권한 로드 완료");
 	}
 	
 	/**

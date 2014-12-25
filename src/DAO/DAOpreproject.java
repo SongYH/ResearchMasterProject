@@ -56,6 +56,7 @@ public class DAOpreproject {
 		}
 
 		PreProjectList.getInstance().setPreProjectList(retUserList);
+		System.out.println("신청과제목록 로드 완료");
 	}
 	
 	/**

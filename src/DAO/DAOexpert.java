@@ -61,6 +61,7 @@ public class DAOexpert
 			e.printStackTrace();
 		}
 		ExpertList.getInstance().setExpertList(retExpertList);
+		System.out.println("전문가 로드 완료");
 	}
 	
 	/**

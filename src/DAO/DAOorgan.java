@@ -51,6 +51,7 @@ public class DAOorgan
 		}
 		
 		OrganList.getInstance().setOrganList(retOrganList);
+		System.out.println("기관 로드 완료");
 	}
 	
 	/**

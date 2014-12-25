@@ -52,6 +52,7 @@ public class DAOclawback {
          e.printStackTrace();
       }
       ClawbackList.getInstance().setClawbackList(clawbackList);
+      System.out.println("환수금목록 로드 완료");
    }
    
    /**

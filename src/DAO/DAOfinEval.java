@@ -75,6 +75,7 @@ public class DAOfinEval
 		}
 
 		FinEvalPlanList.getInstance().setPlanList(retFinPlanList);
+		System.out.println("최종평가계획 로드 완료");
 	}
 	
 	public void loadResultList()
@@ -104,6 +105,7 @@ public class DAOfinEval
 		}
 
 		FinEvalResultList.getInstance().setResultList(retFinResultList);
+		System.out.println("최종평가결과 로드 완료");
 	}
 	
 	
@@ -133,8 +135,6 @@ public class DAOfinEval
 				String query = queryBuilder.toString();
 				
 				PreparedStatement pstmt = connection.prepareStatement(query);
-				
-				System.out.println(x.getProjectNumber() + "  " + x.getProjectLeaderEmail());
 				
 				pstmt.setInt(1, x.getProjectNumber());
 				pstmt.setString(2, x.getExpertLeaderId());
@@ -167,9 +167,10 @@ public class DAOfinEval
 		
 		catch(SQLException e)
 		{
+			System.out.println("최종평가계획 DB저장 실패....");
 			e.printStackTrace();
 		}
-		
+		System.out.println("최종평가계획 DB저장 성공");
 		return true;
 	}
 	

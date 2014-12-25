@@ -56,6 +56,7 @@ public class DAOuser
 		}
 
 		UserList.getInstance().setUserList(retUserList);
+		System.out.println("유저 로드 완료");
 	}
 	
 	/**

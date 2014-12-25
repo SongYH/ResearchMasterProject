@@ -52,6 +52,7 @@ public class DAOCalculate {
          e.printStackTrace();
       }
       CalculateList.getInstance().setCalculateList(calculateList);
+      System.out.println("정산목록 로드 완료");
    }
    
    /**

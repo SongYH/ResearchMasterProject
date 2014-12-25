@@ -53,6 +53,7 @@ public class DAOevidence {
          e.printStackTrace();
       }
       EvidenceList.getInstance().setEvidenceList(evidenceList);
+      System.out.println("사업증빙자료 로드 완료");
    }
    
    /**

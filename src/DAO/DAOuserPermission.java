@@ -50,6 +50,7 @@ public class DAOuserPermission
 		}
 		
 		UserPermissionList.getInstance().setList(retUserList);
+		System.out.println("유저권한 로드 완료");
 	}
 	
 	/**

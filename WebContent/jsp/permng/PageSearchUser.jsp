@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="Control.PermissionManager" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -7,6 +8,25 @@
 </head>
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
+<%
+	request.setCharacterEncoding("UTF-8");
+
+	String login_id = (String)session.getAttribute("loginId");
+	PermissionManager manager = new PermissionManager();
+	
+	if(login_id == null || login_id == "") 
+	{
+		response.sendRedirect("/ResearchMasterProject/jsp/common/login.jsp");
+	}
+	else
+	{
+		String permission = manager.confirmUserPermission(login_id);// 권한을 아이디를 통해 가져옴 
+		
+		if(permission.equals("권한담당자"))
+		{
+%>
+
+
 <div id="contents">
 	<h1>권한관리 사용자 검색</h1>
 	<form action="/ResearchMasterProject/jsp/permng/PageManagePerm.jsp" method="post" name="searchInputs">
@@ -24,5 +44,12 @@
 		</table>
 	</form>
 </div>
+<%		}
+		else
+		{
+			out.println("<script>alert('권한담당자가 아닙니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
+		}
+	}
+%>
 </body>
 </html>

@@ -23,6 +23,10 @@ public class UserList
 		static final UserList uniqueInstance = new UserList();
 	}
 
+	private UserList()
+	{
+	}
+
 	public static UserList getInstance()
 	{
 		return UserListHolder.uniqueInstance;
@@ -154,41 +158,30 @@ public class UserList
 		return arr;
 	}
 
-	/*
-	 * public ArrayList<User> getUserListFromOrganName(String organName)//
-	 * get사용자 { ArrayList<User> arr = new ArrayList<User> (); //OrganList
-	 * organlist = OrganList.getInstance();
-	 * 
-	 * for (int i = 0; i < userList.size(); i++) {
-	 * 
-	 * } return arr; }
-	 */
-	public ArrayList<User> getUserListFromOrganId(int organId) // get사용자 목록
-	{
-		ArrayList<User> retUserList = new ArrayList<User>();
-		
-		for (int i = 0; i < userList.size(); i++)
-		{
-			if (userList.get(i).getOrganId() == organId)
-				retUserList.add(userList.get(i));
-		}
-		
-		if(retUserList.size()==0) return null;
-		
-		return retUserList;
-	}
-
 	public int getuserOrganId(String id) // get사용자사업자번호
 	{
 		for (int i = 0; i < userList.size(); i++)
 		{
 			if (userList.get(i).getId().equals(id))
 				{
-					System.out.println(userList.get(i).getOrganId());
-					return userList.get(i).getOrganId();
+					int x = userList.get(i).getOrganId();
+					return x;
 				}
 		}
 		return -999;
 	}
 	
+	public ArrayList<User> getuserorid(int orid) // get사용자정보
+	{
+		ArrayList<User> arr = new ArrayList<User>();
+		
+		for (int i = 0; i < userList.size(); i++)
+		{
+			if(userList.get(i).getOrganId() == orid)
+			{
+				arr.add(userList.get(i));
+			}
+		}
+		return arr;
+	}
 }

@@ -53,7 +53,7 @@ if (loginId != null)
 				</ul>
 			<li><a href="#">관리자메뉴</a>
 				<ul>
-					<li><a href="#" >사용자관리</a></li>
+					<li><a href="/ResearchMasterProject/jsp/usermng/PageSearchUser.jsp" >사용자관리</a></li>
 					<li><a href="/ResearchMasterProject/jsp/expmng/PageSearchExpert.jsp" >전문가관리</a></li>
 					<li><a href="/ResearchMasterProject/jsp/permng/PageSearchUser.jsp" >권한관리</a></li>
 				</ul>

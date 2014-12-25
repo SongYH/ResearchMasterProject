@@ -64,7 +64,6 @@ private Connection connection;
 				//프로젝트 번호로 ID 가져오기
 				String sqlQuery2 = "SELECT userId FROM project_user where projectNumber ='"+projectNumber+"';";
 				PreparedStatement pstmt2 = connection.prepareStatement(sqlQuery2);
-				System.out.println(sqlQuery2);
 				ResultSet result2 = pstmt2.executeQuery();
 				while(result2.next())
 				{
@@ -110,7 +109,7 @@ private Connection connection;
 			for(ProjectCareer x : saveList)
 			{
 				queryBuilder.delete(0, queryBuilder.length());
-				queryBuilder.append("INSERT INTO projectcareer (recordDate, status, type, area, projectNumber, projectNumber, leaderId, leaderName, organId, organName, registerDate, agreeYear, fileName) ");
+				queryBuilder.append("INSERT INTO projectcareer (recordDate, status, type, area, projectNumber, projectName, leaderId, leaderName, organId, organName, registerDate, agreeYear, fileName) ");
 				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 				queryBuilder.append("ON DUPLICATE KEY UPDATE " );
 				queryBuilder.append("recordDate = ?, status = ?, type = ?, area = ?, projectNumber = ?, projectName = ?, leaderId = ?, leaderName = ?, ");
@@ -120,7 +119,7 @@ private Connection connection;
 				
 				PreparedStatement pstmt = connection.prepareStatement(query);
 				
-				/* 수정 */
+				/* 등록 */
 				pstmt.setDate(1, new java.sql.Date(x.getRecordDate().getTime()));
 				pstmt.setString(2, (x.getProjectInfo()).getStatus());
 				pstmt.setString(3, (x.getProjectInfo()).getType());
@@ -135,7 +134,20 @@ private Connection connection;
 				pstmt.setInt(12, (x.getProjectInfo()).getAgreeYear());
 				pstmt.setString(13, (x.getProjectInfo()).getFileName());
 				
-				
+				/* 수정 */
+				pstmt.setDate(14, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setString(15, (x.getProjectInfo()).getStatus());
+				pstmt.setString(16, (x.getProjectInfo()).getType());
+				pstmt.setString(17, (x.getProjectInfo()).getArea());
+				pstmt.setInt(18, (x.getProjectInfo()).getProjectNumber());
+				pstmt.setString(19, (x.getProjectInfo()).getProjectName());
+				pstmt.setString(20, (x.getProjectInfo()).getLeaderId());
+				pstmt.setString(21, (x.getProjectInfo()).getLeaderName());
+				pstmt.setInt(22, (x.getProjectInfo()).getOrganId());
+				pstmt.setString(23, (x.getProjectInfo()).getOrganName());
+				pstmt.setDate(24, new java.sql.Date((x.getProjectInfo()).getRegisterDate().getTime()));
+				pstmt.setInt(25, (x.getProjectInfo()).getAgreeYear());
+				pstmt.setString(26, (x.getProjectInfo()).getFileName());
 				/*
 				//사용자와 과제 묶기
 				for(String t : (x.getProjectInfo()).getUserIdList())
@@ -169,9 +181,10 @@ private Connection connection;
 		
 		catch(SQLException e)
 		{
+			System.out.println("과제 이력 저장실패 ");
 			e.printStackTrace();
 		}
-		
+		System.out.println("과제 이력 저장 완료 ");
 		return true;
 	}
 	

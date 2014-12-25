@@ -63,7 +63,6 @@ public class MainControl implements ServletContextListener
 	public void contextDestroyed(ServletContextEvent event)
 	{
 		System.out.println(">>> 과제관리시스템 종료!!");
-		daoBudget.saveList();
 		daoCal.saveList();
 		daoExp.saveList();
 		daoFin.savePlanList();
@@ -71,6 +70,7 @@ public class MainControl implements ServletContextListener
 		daoOrg.saveList();
 		daoPerm.saveList();
 		daoProj.saveList();
+		daoBudget.saveList();
 		daoUser.saveList();
 		daoUserPerm.saveList();
 		daoProCar.saveList();

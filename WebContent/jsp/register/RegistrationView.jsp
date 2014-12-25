@@ -125,7 +125,7 @@
 					<td align="right" width="150">참여연구원 </td>
 					<td align="left" class=text_bold	style="padding-left: 13px">
 					
-					<select name="selectTest" onchange="select(this.value)" id="selectTest">
+					<select name="userSelect" onchange="select(this.value)" id="userSelect">
 							<option value="0">없음</option>
 							<option value="1">1명</option>
 							<option value="2">2명</option>
@@ -171,8 +171,8 @@
 					<!-- 히든으로 넘어갈 데이터 -->
 					<input type="hidden" name="status" value="등록">
 					<input type="hidden" name="registerday"value=<%=today%>>
-					<input type="hidden" name="workerId1"  id="workerId1" value="">
-					<input type="hidden" name="workerId2" id="workerId2" value="">
+					<input type="text" name="workerId1"  id="workerId1" value="">
+					<input type="text" name="workerId2" id="workerId2" value="">
 					<input type="hidden" name="workerId3" id="workerId3" value="">
 					<input type="hidden" name="workerId4" id="workerId4" value="">
 					<input type="hidden" name="workerId5" id="workerId5" value="">

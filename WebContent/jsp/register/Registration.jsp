@@ -21,7 +21,6 @@
 		preProject = projectM.reqSelectionEvaluationProject(login_id, "선정평가통과");
 		//아이디로 User객체 가져오기
 	}
-	
 	//로그인후 세션
 %>
 

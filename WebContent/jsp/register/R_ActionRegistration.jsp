@@ -10,7 +10,7 @@
 	String projectType = request.getParameter("projectType");
 	String projectArea = request.getParameter("projectArea");
 	String leaderName = request.getParameter("leaderName");
-	String leaderId = "song91";
+	String leaderId = (String)session.getAttribute("loginId"); // 세션 아이디 가져오기
 	String organName = request.getParameter("organName");
 	String organId = request.getParameter("organId"); // Int로 변경해야함
 	String agreeYear = request.getParameter("agreeYear");
@@ -28,6 +28,28 @@
 	
 	String amount = request.getParameter("amount");	
 	ArrayList<String> userList = new ArrayList<String>();
+	
+	switch(Integer.parseInt(userSelect))
+	{
+	case 1:
+		userList.add(workerId1);
+		break;
+	case 2:
+		userList.add(workerId1);	userList.add(workerId2);
+		break;
+	case 3:
+		userList.add(workerId1);	userList.add(workerId2);	userList.add(workerId3);
+		break;
+	case 4:
+		userList.add(workerId1);	userList.add(workerId2);	userList.add(workerId3);
+		userList.add(workerId4);
+		break;
+	case 5:
+		userList.add(workerId1);	userList.add(workerId2);	userList.add(workerId3);
+		userList.add(workerId4);	userList.add(workerId5);
+		break;
+		
+	}
 	userList.add("id1");
 	userList.add("id2");
 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");

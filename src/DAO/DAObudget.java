@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 import Common.Budget;
+import Common.BudgetCareer;
 import Common.DBconnection;
 import Entity.BudgetList;
 
@@ -69,27 +70,26 @@ public class DAObudget
 		StringBuilder queryProjectUser = new StringBuilder();
 		try
 		{
-			for (Budget x : saveList)
+			for(Budget x : saveList)
 			{
 				queryBuilder.delete(0, queryBuilder.length());
 				queryBuilder.append("INSERT INTO budget (projectNumber, amount) ");
 				queryBuilder.append("VALUES (?, ?) ");
-				queryBuilder.append("ON DUPLICATE KEY UPDATE ");
+				queryBuilder.append("ON DUPLICATE KEY UPDATE " );
 				queryBuilder.append("projectNumber = ?, amount = ?;");
-
+				
 				String query = queryBuilder.toString();
-
+				
 				PreparedStatement pstmt = connection.prepareStatement(query);
 
 				pstmt.setInt(1, x.getProjectNumber());
 				pstmt.setInt(2, x.getAmount());
 
-				/* 수정 */
 				pstmt.setInt(3, x.getProjectNumber());
 				pstmt.setInt(4, x.getAmount());
-
+				
 				pstmt.executeUpdate();
-				pstmt.close();
+				pstmt.close();	
 			}
 		}
 

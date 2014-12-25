@@ -176,4 +176,10 @@ public class ProjectManager
 		return permission;
 	}
 	
+	public boolean reqSetPreProjectState(int num, String state)
+	{
+		SubjectManager subm = new SubjectManager();
+		return subm.setChangePreProjectStatus(num, state);
+	}
+	
 }

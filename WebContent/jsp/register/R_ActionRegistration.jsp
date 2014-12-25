@@ -26,6 +26,8 @@
 	String workerId4 = request.getParameter("workerId4");
 	String workerId5 = request.getParameter("workerId5");
 	
+	String preProjectNum = request.getParameter("preProjectNum");
+	
 	String amount = request.getParameter("amount");	
 	ArrayList<String> userList = new ArrayList<String>();
 	
@@ -60,6 +62,8 @@
 			Integer.parseInt(agreeYear), fileName, userList ); // 프로젝트 만듬
 	Budget budget = new Budget(projectNum, Integer.parseInt(amount)); //예산 만듬
 	projectM.addProject(project, budget);
+	
+	projectM.reqSetPreProjectState(Integer.parseInt(preProjectNum), "등록완료");
 %>
 <html>
 <head>
@@ -67,21 +71,8 @@
 <title>연구원 확인</title>
 </head>
 <body>
-	과제번호 <%=projectNum %> <br>
-	과제명 <%=projectName %> <br>
-	과제타입 <%=projectType %> <br>
-	과제분야 <%=projectArea %> <br>
-	책임자이름 <%=leaderName %> <br>
-	기관명 <%=organName %> <br>
-	사업자번호 <%=organId %> <br>
-	연한 <%=agreeYear %> <br>
-	상태 <%=projectStatus %> <br>
-	연구원 1  <%=workerId1 %> <br>
-	연구원 2 <%=workerId2 %> <br>
-	연구원 3  <%=workerId3 %> <br>
-	연구원 4 <%=workerId4%> <br>
-	연구원 5 <%=workerId5 %> <br>
-	총액  <%=amount %> <br>
+	<%	 out.println("<script>alert('과제 등록 완료'); location.href = '/ResearchMasterProject/jsp/register/SearchRegistration.jsp'; </script>"); 
+ 	 %>
 </body>
 </html>
 	

@@ -29,22 +29,28 @@
 </head>
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
-	<% if(availability == 1){ %><br><br>
-		<font size="4"><center>
-		기관이 등록되어 있지 않은 사용자입니다.
+	<% if(id == null){ %>
+		<font size="4">
 		<br>
-		과제 신청이 불가합니다.
+		<center>로그인이 필요한 서비스입니다.</center>
+		<br>
+		<font size="4"><a href = "/ResearchMasterProject/jsp/common/login.jsp"><center>확인</center></a></font>
+		</font>
+	<%} else if(availability == 1){ %><br><br>
+		<font size="4">
+		<center>기관이 등록되어 있지 않은 사용자입니다.</center>
+		<br>
+		<center>과제 신청이 불가합니다.</center>
 		<br><br>
-		<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp">확인</a></font>
-		</center></font>
+		<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp"><center>확인</center></a></font>
+		</font>
 	<%}else if(availability == 2){ %><br><br>
-		<font size="4"><center>
-		이미 사용자의 기관에서 지원한 사업입니다. 
+		<font size="4">
+		<center>이미 사용자의 기관에서 지원한 사업입니다.</center>
 		<br>
-		과제 신청이 불가합니다.
-		<br><br>
-		<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp">확인</a></font>
-		</center></font>
+		<center>과제 신청이 불가합니다.</center>
+		<br><br></font>
+		<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp"><center>확인</center></a></font>
 	<%}else if(availability == 0){ %>
 	<form method = "post" action="/ResearchMasterProject/jsp/proposal/Application_Manager3.jsp">
 		<p align="center"><b>과제 신청</b></p>
@@ -90,7 +96,6 @@
 		<input type="hidden" value="<%=name %>" name = "name">
 		<input type="hidden" value="<%=id %>" name = "id">
 		<input type="hidden" value="<%=status %>" name = "status">
-		
 		</form>
 		<%} %>
 </body>

@@ -26,6 +26,6 @@
 <%@include file="/jsp/common/Main.jsp"%>
 <br><br>
 <font size="4"><center>과제 등록이 완료되었습니다.</center></font><br>
-<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp">확인</a></font>
+<font size="4"><a href = "/ResearchMasterProject/jsp/proposal/Application.jsp"><center>확인</center></a></font>
 </body>
 </html>

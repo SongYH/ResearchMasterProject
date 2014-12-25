@@ -6,7 +6,7 @@
 <%	
 	response.setContentType("text/html; charset=UTF-8");
 	request.setCharacterEncoding("UTF-8"); 
-	String id = "id1";
+	String id = (String)session.getAttribute("loginId");    // 아이디 가져오기
 	SubjectManager um = new SubjectManager();
 	ArrayList<PreProject> pl = um.request_PreProjectList(id);
 %>
@@ -18,6 +18,15 @@
 </head>
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
+
+	<% if(id == null){ %>
+		<font size="4">
+		<br>
+		<center>로그인이 필요한 서비스입니다.</center>
+		<br>
+		<font size="4"><a href = "/ResearchMasterProject/jsp/common/login.jsp"><center>확인</center></a></font>
+		</font>
+	<% }else{ %>
 	<br>
 	<table style=margin:auto; border = "1">
 	<caption><b>신청과제 조회내역</b></caption>
@@ -45,7 +54,9 @@
 		<td><%=pl.get(i).getFileName() %></td>
 		<td><center><a href ="#">수정</a></center></td>
 		</tr>
-	<%} %>
+	<%}
+	}
+	%>
 	</table>
 </body>
 </html>

@@ -3,6 +3,7 @@ package Entity;
 import java.util.ArrayList;
 
 import Common.PreProject;
+import Common.Project;
 import DAO.DAOpreproject;
 
 public class PreProjectList {
@@ -41,7 +42,18 @@ public class PreProjectList {
 		}
 		return result;
 	}
-	
+	public boolean setPreProjectStatu(int num, String status)
+	{
+		for (PreProject p : preProjectList)
+		{
+			if (p.getProjectNumber() == num)
+			{
+				p.setStatus(status);
+				return true;
+			}
+		}
+		return false;
+	}
 	public boolean getDuplicationCheck(String subjectName, int organId, String type, String area){ 
 		// 과제신청 중복여부확인
 		boolean result = false;

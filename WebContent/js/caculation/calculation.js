@@ -6,7 +6,7 @@ function searchCalculation() {
 	if (document.searchCalculate.select_project_number.value == "") {
 		alert("과제번호를 입력하세요");
 		document.searchCalculate.select_project_number.focus();
-		return;
+		return;rmr
 	}
 
 	document.searchCalculate.action = "resultCalculation.jsp";

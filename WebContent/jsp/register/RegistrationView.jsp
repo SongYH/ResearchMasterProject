@@ -115,7 +115,7 @@
 			<table align="center">
 				<tr>
 					<td align="right">파일첨부</td>
-					<td align="left"><input type="text" name="fileName" /></td>
+					<td align="left"><input type="text" name="fileName" value="과제등록_사업계획서.hwp" /></td>
 				</tr>
 			</table>
 			<hr />
@@ -176,6 +176,7 @@
 					<input type="hidden" name="workerId3" id="workerId3" value="">
 					<input type="hidden" name="workerId4" id="workerId4" value="">
 					<input type="hidden" name="workerId5" id="workerId5" value="">
+					<input type="hidden" name="preProjectNum" id="preProjectNum" value=<%=preProject.getProjectNumber()%>>
 					<input type="submit" name="submit" value="등록" />
 					<input type="reset" name="reset" value="다시작성" />
 					</td>

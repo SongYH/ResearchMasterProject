@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Common.PreProject;
 import Common.Subject;
 import Entity.PreProjectList;
+import Entity.ProjectList;
 import Entity.SubjectList;
 import Entity.UserList;
 
@@ -35,6 +36,16 @@ public class SubjectManager {
 		return 0; // 신청 가능 
 	}
 	
+	// 과제 상태 변경 (과제번호 / 상태)
+	public boolean setChangePreProjectStatus(int num, String state)
+	{
+		PreProjectList preprojectList = PreProjectList.getInstance();
+		if (preprojectList.setPreProjectStatu(num, state))
+			return true;
+		else
+			return false;
+	}
+		
 	public void request_AddpreProject(int organId, String fileName, String id, String type, String area, String subjectName){ 
 		// 신청과제등록
 		PreProjectList p = PreProjectList.getInstance();

@@ -15,10 +15,11 @@
 	
 	ProjectManager projectM = new ProjectManager();
 	PreProject preProject = new PreProject();
-
+	PreProject preProject2 = new PreProject();
 	if(login_id != null)
 	{
 		preProject = projectM.reqSelectionEvaluationProject(login_id, "선정평가통과");
+		preProject2 = projectM.reqSelectionEvaluationProject(login_id, "등록완료");
 		//아이디로 User객체 가져오기
 	}
 	//로그인후 세션
@@ -36,9 +37,16 @@
 		{
 			if(preProject == null)
 			{
+				if(preProject2 == null)
+				{
 				%>
 					<p align="center"> 선정평가를 통과한 과제가 없습니다.</p>
 				<%
+				}
+				else 
+				{
+					 out.println("<script>alert('등록된 과제가 있습니다.'); location.href = '/ResearchMasterProject/jsp/register/SearchRegistration.jsp'; </script>"); 
+				}
 			}
 			else // 과제 있을때
 			{

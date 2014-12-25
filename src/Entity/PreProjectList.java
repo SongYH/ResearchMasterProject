@@ -61,9 +61,9 @@ public class PreProjectList {
 	
 	public void savePreProject(int organId, String fileName, String id, String type, String area, String subjectName){ 
 		// 신청과제정보저장
-		PreProject saveFreeProject = new PreProject(0, organId, subjectName, "신청", type, area, id, fileName);
+		PreProject savePreProject = new PreProject(preProjectList.size()+1, organId, subjectName, "신청", type, area, id, fileName);
 
-		preProjectList.add(saveFreeProject);
+		preProjectList.add(savePreProject);
 	}
 
 	public ArrayList<PreProject> getPreProjectList() {

@@ -74,32 +74,32 @@ public class DAOpreproject {
 		try{
 			for(PreProject x : saveList){
 				queryBuilder.delete(0, queryBuilder.length());
-				queryBuilder.append("INSERT INTO preproject (organId, subjectName, status, type, area, id, fileName) ");
-				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?) ");
+				queryBuilder.append("INSERT INTO preproject (projectNumber, organId, subjectName, status, type, area, id, fileName) ");
+				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?) ");
 				queryBuilder.append("ON DUPLICATE KEY UPDATE " );
-				queryBuilder.append("organId = ?,  subjectName = ?, status = ?, type = ?, ");
+				queryBuilder.append("projectNumber = ?, organId = ?,  subjectName = ?, status = ?, type = ?, ");
 				queryBuilder.append("area = ?, id = ?, fileName = ?;");
-				
-				System.out.println(x.getOrganId() + "  " + x.getSubjectName() + " 저장");
 				
 				String query = queryBuilder.toString();
 				PreparedStatement pstmt = connection.prepareStatement(query);
-				System.out.println(x.getOrganId() + "  "+ x.getSubjectName() );
-				pstmt.setInt(1, x.getOrganId());
-				pstmt.setString(2, x.getSubjectName());
-				pstmt.setString(3, x.getStatus());
-				pstmt.setString(4, x.getType());
-				pstmt.setString(5, x.getArea());
-				pstmt.setString(6, x.getId());
-				pstmt.setString(7, x.getFileName());
+				
+				pstmt.setInt(1, x.getProjectNumber());
+				pstmt.setInt(2, x.getOrganId());
+				pstmt.setString(3, x.getSubjectName());
+				pstmt.setString(4, x.getStatus());
+				pstmt.setString(5, x.getType());
+				pstmt.setString(6, x.getArea());
+				pstmt.setString(7, x.getId());
+				pstmt.setString(8, x.getFileName());
 				/* 수정 */
-				pstmt.setInt(8, x.getOrganId());
-				pstmt.setString(9, x.getSubjectName());
-				pstmt.setString(10, x.getStatus());
-				pstmt.setString(11, x.getType());
-				pstmt.setString(12, x.getArea());
-				pstmt.setString(13, x.getId());
-				pstmt.setString(14, x.getFileName());
+				pstmt.setInt(9, x.getProjectNumber());
+				pstmt.setInt(10, x.getOrganId());
+				pstmt.setString(11, x.getSubjectName());
+				pstmt.setString(12, x.getStatus());
+				pstmt.setString(13, x.getType());
+				pstmt.setString(14, x.getArea());
+				pstmt.setString(15, x.getId());
+				pstmt.setString(16, x.getFileName());
 			
 				pstmt.executeUpdate();
 				pstmt.close();

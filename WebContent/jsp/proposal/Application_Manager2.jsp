@@ -15,7 +15,7 @@
 	String name = request.getParameter("name");
 	
 	SubjectManager sm = new SubjectManager();
-	String id = "id1";
+	String id = (String)session.getAttribute("loginId");    // 아이디 가져오기
 	int availability = sm.request_Application_Availability(id, name, type, area);
 	int organId = sm.request_organId(id);
 %>
@@ -47,7 +47,7 @@
 		</center></font>
 	<%}else if(availability == 0){ %>
 	<form method = "post" action="/ResearchMasterProject/jsp/proposal/Application_Manager3.jsp">
-		<b>과제 신청</b>
+		<p align="center"><b>과제 신청</b></p>
 		<table>	
 		<tr>
 		<td>분 야</td>
@@ -80,6 +80,9 @@
 		<td>업로드 파일</td>
 		<td>: <INPUT type="text" name="fileName"></td>
 		</tr>
+		<tr>
+		<td colspan=2> <INPUT type="submit" value="등록"></td>
+		</tr>
 		</table>
 		<input type="hidden" value="<%=organId %>" name = "organId">
 		<input type="hidden" value="<%=type %>" name = "type">
@@ -87,7 +90,7 @@
 		<input type="hidden" value="<%=name %>" name = "name">
 		<input type="hidden" value="<%=id %>" name = "id">
 		<input type="hidden" value="<%=status %>" name = "status">
-		<INPUT type="submit" value="등록">
+		
 		</form>
 		<%} %>
 </body>

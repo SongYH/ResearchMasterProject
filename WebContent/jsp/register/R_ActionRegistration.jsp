@@ -17,7 +17,7 @@
 	String fileName = request.getParameter("fileName");
 	String userSelect = request.getParameter("userSelect"); // Int 변환 몇명 선택인지
 	String projectStatus = request.getParameter("status");
-
+	
 	String registerday = request.getParameter("registerday"); // 20141212
 	
 	String workerId1 = request.getParameter("workerId1");
@@ -55,7 +55,7 @@
 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");
 	Date Dregisterday = transFormat.parse(registerday);
 
-	
+	projectStatus = projectM.reqApproval();
 	//상태, 분야, 기간, 번호(int), 과제명, 과책아이디, 과책이름, 기관번호(int), 기관명, 등록일(date), 협약연한(int), 파일명, userList
 	Project project = new Project(projectStatus, projectType, projectArea, projectNum, projectName,
 			leaderId, leaderName, Integer.parseInt(organId), organName, Dregisterday,

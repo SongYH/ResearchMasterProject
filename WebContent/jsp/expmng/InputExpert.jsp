@@ -37,8 +37,7 @@
 function checkInput(List)
 {
 
-	if(List.new_expertnumber.value=="")alert("전문가 번호를 입력하세요!");
-	else if(List.new_officeaddress.value=="") alert("근무지 주소를 입력하세요!");
+	if(List.new_officeaddress.value=="") alert("근무지 주소를 입력하세요!");
 	else if(List.new_position.value=="") alert("직급을 입력하세요!");
 	else if(List.new_accountinfo.value=="") alert("계좌정보를 입력하세요!");
 	else if(List.new_field.value=="") alert("분야를 입력하세요!");
@@ -98,12 +97,18 @@ function checkInput(List)
 			<tr>
 				<td><input type="text" name="user_socialnumber" value ="<%= expert.getSocialNumber() %>"style="display: none" /></td>
 			</tr>
-			<tr><td>전문가번호</td>   <td>	<input type="text" name="new_expertnumber" /> </td></tr>
 			<tr><td>근무지주소</td>   <td>	<input type="text" name="new_officeaddress"  /> </td></tr>
 			<tr><td>직급</td>       <td>	<input type="text" name="new_position"  /> </td></tr>
 			<tr><td>계좌정보</td>     <td>	<input type="text" name="new_accountinfo"  /> </td></tr>
-			<tr><td>분야</td>        <td>	<input type="text" name="new_field"  /> </td></tr>
-			
+			<tr><td>분야</td>        
+			<td>
+				<select name="new_field" id="new_field">
+				<option value="저변확대형">저변확대형</option>
+				<option value="선택집중형">선택집중형</option>
+				<option value="인프라조성형">인프라조성형</option>
+				</select>	
+			 </td>
+			 </tr>
 			<tr>
 				<td><input type="submit" name="button" value="완료" onclick="checkInput(this.form)" /></td>
 				<td><input type="reset" name="reset" value="다시작성" /></td>

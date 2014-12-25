@@ -4,9 +4,10 @@
 <%@ page import="Common.User" %>
 <% request.setCharacterEncoding("UTF-8"); %>
 <%
-	String projectNum = request.getParameter("projectNum");
-	
+	String[] projectNum = request.getParameterValues("projectNum");
+	String[] newPermissionName = request.getParameterValues("newPermissionName");
+
 	SubjectManager subM = new SubjectManager();
-	subM.setChangePreProjectStatus(Integer.parseInt(projectNum), "선정평가통과");
+	subM.setChangePreProjectStatus(projectNum, newPermissionName);
 	response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");
 %>

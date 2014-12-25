@@ -32,6 +32,7 @@ public class ExpertList
 		expertList.add(expert);
 	}
 	
+	
 	///전문가번호로 전문가 얻어오기
 	public Expert getExpert(int expertNumber)
 	{

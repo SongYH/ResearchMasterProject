@@ -161,7 +161,11 @@ public class ProjectManager
 		careerManager.addBudgetCareer(new BudgetCareer(budgetCareerList.getBudgetCareerList().size()+1,today, b));
 		careerManager.addProjectCareer(new ProjectCareer(projectCareerList.getProjectCareerList().size()+1, today, p));
 	}
-
+	
+	public String reqApproval()
+	{
+		return "등록승인";
+	}
 	public ArrayList<String> reqResearcherIDList(int num)
 	{
 		ProjectList projectList = ProjectList.getInstance();

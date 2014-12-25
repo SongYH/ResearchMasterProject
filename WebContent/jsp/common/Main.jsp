@@ -35,10 +35,10 @@ if (loginId != null)
 			<li><a href="#">과제평가</a>
 				<ul>
 					<li><a href="/ResearchMasterProject/jsp/selecteval/PageSearchSelect.jsp" >선정평가</a></li>
-					<li><a href="#" >중간평가</a></li>
-					<li><a href="/ResearchMasterProject/jsp/fineval/ChargerFinEvalSelectProject.jsp" >최종평가</a></li>
-					<li><a href="#" >중간평가결과조회</a></li>
-					<li><a href="#" >최종평가결과조회</a></li>
+					<li><a href="/ResearchMasterProject/jsp/mideval/SelectUser.jsp" >중간평가</a></li>
+					<li><a href="/ResearchMasterProject/jsp/fineval/SelectUser.jsp" >최종평가</a></li>
+					<li><a href="/ResearchMasterProject/jsp/mideval/PLMidEval.jsp" >중간평가결과조회</a></li>
+					<li><a href="/ResearchMasterProject/jsp/fineval/PLFinEval.jsp" >최종평가결과조회</a></li>
 				</ul>
 			</li>
 			<li><a href="#">사업비정산</a>

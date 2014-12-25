@@ -7,13 +7,18 @@ import javax.servlet.ServletContextListener;
 import DAO.DAOCalculate;
 import DAO.DAObudget;
 import DAO.DAObudgetCareer;
+import DAO.DAOclawback;
+import DAO.DAOevidence;
 import DAO.DAOexpert;
 import DAO.DAOfinEval;
 import DAO.DAOorgan;
 import DAO.DAOpermission;
+import DAO.DAOpreproject;
 import DAO.DAOproject;
 import DAO.DAOprojectCareer;
+import DAO.DAOsubject;
 import DAO.DAOuser;
+import DAO.DAOuserPermission;
 import DAO.*;
 
 public class MainControl implements ServletContextListener
@@ -26,6 +31,7 @@ public class MainControl implements ServletContextListener
 	DAOevidence daoEvidence = new DAOevidence();
 	DAOexpert daoExp = new DAOexpert();
 	DAOfinEval daoFin = new DAOfinEval();
+	DAOmidEval daoMid = new DAOmidEval();
 	DAOorgan daoOrg = new DAOorgan();
 	DAOpermission daoPerm = new DAOpermission();
 	DAOpreproject daoPrepro = new DAOpreproject();
@@ -45,6 +51,8 @@ public class MainControl implements ServletContextListener
 		daoExp.loadList();
 		daoFin.loadPlanList();
 		daoFin.loadResultList();
+		daoMid.loadPlanList();
+		daoMid.loadResultList();
 		daoOrg.loadList();
 		daoPerm.loadList();
 		daoProj.loadList();
@@ -82,7 +90,8 @@ public class MainControl implements ServletContextListener
 		
 		daoFin.savePlanList();	//
 		daoFin.saveResultList();//
-		
+		daoMid.savePlanList();	//
+		daoMid.saveResultList();//
 		this.ctx = null;
 	}
 }

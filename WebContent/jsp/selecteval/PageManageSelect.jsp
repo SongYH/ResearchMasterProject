@@ -54,6 +54,7 @@
 				<td><%= x.getId() %></td>
 				<td>
 					<select name="newPermissionName">
+						<option selected value="신청">신청</option>
 						<option selected value="선정평가통과">선정평가통과</option>
 					</select>
 				</td>

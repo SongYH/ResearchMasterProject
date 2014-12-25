@@ -14,7 +14,7 @@
 	request.setCharacterEncoding("UTF-8");
 	String id = request.getParameter("user_id"); 
 	String password = request.getParameter("user_password");
-	int expertnumber = Integer.parseInt(request.getParameter("new_expertnumber"));
+//	int expertnumber = Integer.parseInt(request.getParameter("new_expertnumber"));
 	String name = request.getParameter("user_name");
 	String socialNumber = request.getParameter("user_socialnumber");
 	String tel = request.getParameter("user_tel");
@@ -31,7 +31,7 @@
 	
 	expert.setId(id);
 	expert.setPassword(password);
-	expert.setExpertNumber(expertnumber);
+//	expert.setExpertNumber(expertnumber);
 	expert.setName(name);
 	expert.setSocialNumber(socialNumber);
 	expert.setTel(tel);

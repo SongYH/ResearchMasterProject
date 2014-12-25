@@ -13,6 +13,7 @@ public class ExpertManager {
 		expertList.addExpert(expert);
 	}
 	
+	
 	public ArrayList<Expert> requestSearchExpert(int expertNumber)
 	{
 		ArrayList<Expert> retList = new ArrayList<Expert>();

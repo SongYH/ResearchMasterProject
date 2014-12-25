@@ -46,7 +46,16 @@ public class SubjectManager {
 		else
 			return false;
 	}
-		
+	
+	//신청과제 시퀀스 그리지마셈
+	public void setChangePreProjectStatus(String[] num, String[] state)
+	{
+		PreProjectList preprojectList = PreProjectList.getInstance();
+		for(int i = 0; i< num.length; i++)
+		{
+			preprojectList.setPreProjectStatu(Integer.parseInt(num[i]), state[i]);
+		}
+	}
 	public void request_AddpreProject(int organId, String fileName, String id, String type, String area, String subjectName){ 
 		// 신청과제등록
 		PreProjectList p = PreProjectList.getInstance();

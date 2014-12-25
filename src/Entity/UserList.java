@@ -26,7 +26,22 @@ public class UserList
 	private UserList()
 	{
 	}
-
+	
+	public ArrayList<User> getUserListFromOrganId(int organId) // 
+	{
+		ArrayList<User> retUserList = new ArrayList<User>();
+		
+		for (int i = 0; i < userList.size(); i++)
+		{
+			if (userList.get(i).getOrganId() == organId)
+				retUserList.add(userList.get(i));
+		}
+		
+		if(retUserList.size()==0) return null;
+		
+		return retUserList;
+	}
+	
 	public static UserList getInstance()
 	{
 		return UserListHolder.uniqueInstance;

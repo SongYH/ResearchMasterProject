@@ -36,7 +36,15 @@ public class UserManage
       boolean x = organlist.join(organ);
       return x;
    }
+   
+   public ArrayList<User> reqUserListFromOrganId(int organid)
+	{
+		UserList userlist = UserList.getInstance();
 
+		userlist.getUserListFromOrganId(organid);
+		return null;
+	}
+   
    public boolean login(String id, String password)
    {
 

@@ -27,16 +27,20 @@ public class ProjectList
 	}
 
 	// //////////////////////////////
+	//1
 	public boolean regAddProject(Project project)
 	{
 		projectList.add(project);
 		return true;
 	}
 
-	public ArrayList<Project> getAllProjectList()
+	//1
+	public ArrayList<Project> getProjectList()
 	{
 		return projectList;
 	}
+
+	//1
 	public int createProjectNumber()
 	{
 		int projectNum =0;
@@ -60,6 +64,8 @@ public class ProjectList
 		projectNum += projectCnt;
 		return projectNum;
 	}
+	
+	//1
 	// 상태별 과제
 	public ArrayList<Project> getStatusProjectList(String state)
 	{
@@ -75,7 +81,7 @@ public class ProjectList
 		}
 		return statusProjectList;
 	}
-
+	//1
 	// 분야별 과제
 	public ArrayList<Project> getTypeProjectList(String type)
 	{
@@ -91,7 +97,7 @@ public class ProjectList
 		}
 		return typeProjectList;
 	}
-
+	//1
 	// 기간별 과제
 	public ArrayList<Project> getAreaProjectList(String area)
 	{
@@ -107,7 +113,7 @@ public class ProjectList
 		}
 		return areaProjectList;
 	}
-
+	//1
 	// 과제담당자 아이디로 과제 찾기
 	public Project getProjectSearchID(String id)
 	{
@@ -118,7 +124,7 @@ public class ProjectList
 		}
 		return null;
 	}
-
+	//1
 	// 해당 과제 번호의 과제정보
 	public Project getProjectSearchNumber(int num)
 	{
@@ -153,11 +159,6 @@ public class ProjectList
 			}
 		}
 		return null;
-	}
-
-	public ArrayList<Project> getProjectList()
-	{
-		return projectList;
 	}
 
 	public void setProjectList(ArrayList<Project> projectList)

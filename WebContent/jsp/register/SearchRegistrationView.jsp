@@ -15,9 +15,7 @@
 	Project project = projectM.reqProjectSearchNumber(Integer.parseInt(projectNum));
 	Budget budget = projectM.reqBudgetSearchNumber(Integer.parseInt(projectNum));
 	ArrayList<String> userIdList = projectM.reqResearcherIDList(Integer.parseInt(projectNum));
-	ArrayList<User> userList = new ArrayList<User>();
-	for(String id : userIdList)
-		userList.add(projectM.reqUserInfo(id));
+	ArrayList<User> userList = projectM.reqUserListInfo(userIdList);
 %>
 </head>
 <body>

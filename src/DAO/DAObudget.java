@@ -64,7 +64,7 @@ public class DAObudget
 	 */
 	public boolean saveList()
 	{
-		ArrayList<Budget> saveList = BudgetList.getInstance().getAllList();
+		ArrayList<Budget> saveList = BudgetList.getInstance().getBudgetList();
 
 		StringBuilder queryBuilder = new StringBuilder();
 		StringBuilder queryProjectUser = new StringBuilder();

@@ -18,11 +18,6 @@ public class BudgetList
 	{
 	}
 
-	public ArrayList<Budget> getBudgetList()
-	{
-		return budgetList;
-	}
-
 	public static BudgetList getInstance()
 	{
 		return BudgetHolder.uniqueInstance;
@@ -30,11 +25,13 @@ public class BudgetList
 
 	// //////////////////////////////////
 
+	//1
 	public void addBudget(Budget b)
 	{
 		budgetList.add(b);
 	}
 
+	//1
 	// 과제번호로 예산정보 가져오기
 	public Budget getBudgetSearchNumber(int num)
 	{
@@ -45,8 +42,8 @@ public class BudgetList
 		}
 		return null;
 	}
-
-	public ArrayList<Budget> getAllList()
+	
+	public ArrayList<Budget> getBudgetList()
 	{
 		return budgetList;
 	}
@@ -55,6 +52,4 @@ public class BudgetList
 	{
 		this.budgetList = budgetList;
 	}
-	
-	
 }

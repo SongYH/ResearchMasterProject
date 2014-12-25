@@ -14,7 +14,7 @@
 	String userId = request.getParameter("userId");
  	String userPw = request.getParameter("userPw");
  	
- 	if(userM.login(userId, userPw))
+ 	if(userM.reqlogin(userId, userPw))
  	{
 		session.setAttribute("loginId", userId); 
 		response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");

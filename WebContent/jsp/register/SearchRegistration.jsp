@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+		<%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.util.*, java.text.*"  %>
 <%@ page import="Common.*, Control.*, Entity.*"  %>
@@ -30,7 +30,7 @@
 		}
 		else // 과제담당자  책임자 둘다 아닐떄
 	 	{ // 팝업창 띄우고 Home 화면으로 가기
-			 out.println("<script>alert('과제책임자가 아닙니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
+			 out.println("<script>alert('과제책임자 또는 과제담당자가 아닙니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
 	 	}
 	} %>
 	<hr /> <p align="center">과제조회</p> <hr />

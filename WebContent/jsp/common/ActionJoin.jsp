@@ -68,13 +68,13 @@
 			 	System.out.println(oridid);
 			 	
 				user.setOrganId(oridid);
-				um.join(user);
+				um.reqjoin(user);
 			}
 		else if(val==1)
 			{
 				organ.setOrganId(Integer.parseInt(orid));
-				um.join(user);
-				um.Organjoin(organ);
+				um.reqjoin(user);
+				um.reqOrganjoin(organ);
 		 	}
 		%>
 <%	}

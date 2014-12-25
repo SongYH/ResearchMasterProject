@@ -90,7 +90,7 @@ public class DAOproject
 	 */
 	public boolean saveList()
 	{
-		ArrayList<Project> saveList = ProjectList.getInstance().getAllProjectList();
+		ArrayList<Project> saveList = ProjectList.getInstance().getProjectList();
 		
 		StringBuilder queryBuilder = new StringBuilder();
 		StringBuilder queryProjectUser = new StringBuilder();

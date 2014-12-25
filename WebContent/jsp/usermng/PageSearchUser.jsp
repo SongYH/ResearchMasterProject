@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page import="Control.UserManage" %>
-<%@ page import="Common.User" %>
+<%@ page import="Common.*, Control.*, Entity.*"  %>
 <%@ page import="java.util.ArrayList;" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -8,58 +7,61 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="/ResearchMasterProject/css/style.css" />
 <title>사용자조회</title>
-
-<% 
+ <%
+ 	PermissionManager pm = new PermissionManager(); 
 	UserManage um = new UserManage();
 	ArrayList<User> arr = new ArrayList<User>();
 	User user = new User();
-	
-	request.setCharacterEncoding("utf-8");
-	String text1 = request.getParameter("textbox");
-	String text2 = request.getParameter("textbox1");
-	
-	if(text1 != null)
+ %>
+<%@include file="/jsp/common/Main.jsp"%>
+<%if(loginId == null || loginId == "") 
 	{
-		int val = Integer.parseInt(request.getParameter("val"));
-		   
-		if(val == 0)
+		response.sendRedirect("/ResearchMasterProject/jsp/common/login.jsp");
+	}else { // 로그인 되있는 상태면
+		String permission = pm.confirmUserPermission(loginId);		// 권한을 아이디를 통해 가져옴 
+		if(permission.equals("권한담당자")||permission.equals("과제담당자")||permission.equals("전문가담당자")
+		   ||permission.equals("정산담당자")||permission.equals("평가담당자"))	// 담당자 일때
 		{
-			user = um.reqUser(text1); 
-			if(user ==null)
+			request.setCharacterEncoding("utf-8");
+			String text1 = request.getParameter("textbox");
+			String text2 = request.getParameter("textbox1");
+			
+			if(text1 != null)
 			{
-				System.out.println("사용자 없음");
-			}
-			else
-			{
-				arr.add(user);
-			}  
-		}
-		else if(val == 1)
-		{
-		 	System.out.println(text1);
+				int val = Integer.parseInt(request.getParameter("val"));
+				   
+				if(val == 0)
+				{
+					user = um.reqUser(text1); 
+					if(user ==null)
+					{
+						System.out.println("사용자 없음");
+					}
+					else
+					{
+						arr.add(user);
+					}  
+				}
+				else if(val == 1)
+				{
+				 	System.out.println(text1);
 
-			arr = um.reqUserListFromName(text1);
-		}
-		else if(val == 2)
-		{
-			user = um.reqUserList(text1, text2);
-			if(user ==null)
-			{
-				System.out.println("사용자 없음");
+					arr = um.reqUserListFromName(text1);
+				} 
+				else if(val == 3)
+				{
+					arr = um.requserorid(Integer.parseInt(text1));
+				}
 			}
-			else
-			{
-				arr.add(user);
+			else {
 			}
 		}
-		else if(val == 3)
-		{
-			arr = um.requserorid(Integer.parseInt(text1));
-		}
-	}
-	else {
-	}
-%>
+		else
+	 	{ // 팝업창 띄우고 Home 화면으로 가기
+			 out.println("<script>alert('권한이 없습니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
+	 	}
+	} 
+%> 
 <script language="javascript">
 function select(value)
 {
@@ -86,8 +88,7 @@ function select(value)
 }
 </script>
 </head>
-<body>
-<%@include file="/jsp/common/Main.jsp"%>
+<body> 
 <div id="contents">
 	<form method="post" name="userInput" action="/ResearchMasterProject/jsp/usermng/PageSearchUser.jsp">
 		<p align="center">기본정보</p> 
@@ -99,7 +100,6 @@ function select(value)
 		<td><select name="selectTest" id="selectTest" onclick="select(this.value)">
                      <option value="0">아이디</option>
                      <option value="1">이름</option>
-                     <option value="2">아이디+이름</option> 
                      <option value="3">사업자번호</option>
          </select>
          </td>

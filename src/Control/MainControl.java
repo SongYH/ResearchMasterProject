@@ -20,20 +20,20 @@ public class MainControl implements ServletContextListener
 {
 	private ServletContext ctx = null;
 	DAObudget daoBudget = new DAObudget();
+	DAObudgetCareer daoBudCar= new DAObudgetCareer();
 	DAOCalculate daoCal = new DAOCalculate();
+	DAOclawback daoClawback = new DAOclawback();
+	DAOevidence daoEvidence = new DAOevidence();
 	DAOexpert daoExp = new DAOexpert();
 	DAOfinEval daoFin = new DAOfinEval();
 	DAOorgan daoOrg = new DAOorgan();
 	DAOpermission daoPerm = new DAOpermission();
+	DAOpreproject daoPrepro = new DAOpreproject();
 	DAOproject daoProj = new DAOproject();
+	DAOprojectCareer daoProCar=new DAOprojectCareer();
+	DAOsubject daOsubject = new DAOsubject();
 	DAOuser daoUser = new DAOuser();
 	DAOuserPermission daoUserPerm = new DAOuserPermission();
-	DAOprojectCareer daoProCar=new DAOprojectCareer();
-	DAObudgetCareer daoBudCar= new DAObudgetCareer();
-	DAOsubject daOsubject = new DAOsubject();
-	DAOpreproject daoPrepro = new DAOpreproject();
-	DAOevidence daoEvidence = new DAOevidence();
-	DAOclawback daoClawback = new DAOclawback();
 	
 	
 	// Tomcat시작시 아래 메시지 출력
@@ -63,22 +63,26 @@ public class MainControl implements ServletContextListener
 	public void contextDestroyed(ServletContextEvent event)
 	{
 		System.out.println(">>> 과제관리시스템 종료!!");
-		daoCal.saveList();
-		daoExp.saveList();
-		daoFin.savePlanList();
-		daoFin.saveResultList();
-		daoOrg.saveList();
-		daoPerm.saveList();
-		daoProj.saveList();
-		daoBudget.saveList();
-		daoUser.saveList();
-		daoUserPerm.saveList();
-		daoProCar.saveList();
-		daoBudCar.saveList();
+		daoOrg.saveList();	//
+		daoUser.saveList();//
 		daOsubject.saveList();
 		daoPrepro.saveList();
+		daoPerm.saveList();//
+		
+		daoUserPerm.saveList();//
+		
+		daoProj.saveList();//
+		daoBudget.saveList();//
+		daoProCar.saveList();
+		daoBudCar.saveList();
 		daoClawback.saveList();
 		daoEvidence.saveList();
+		daoCal.saveList();	//
+		daoExp.saveList();
+		
+		daoFin.savePlanList();	//
+		daoFin.saveResultList();//
+		
 		this.ctx = null;
 	}
 }

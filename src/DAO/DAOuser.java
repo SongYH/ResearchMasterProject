@@ -76,6 +76,7 @@ public class DAOuser
 		{
 			for(User x : saveList)
 			{
+				System.out.println(x.getId() + "  " + x.getOrganId());
 				queryBuilder.delete(0, queryBuilder.length());
 				queryBuilder.append("INSERT INTO user (id, password, name, socialNumber, tel, email, address, organId) ");
 				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?) ");
@@ -94,7 +95,10 @@ public class DAOuser
 				pstmt.setString(5, x.getTel());
 				pstmt.setString(6, x.getEmail());
 				pstmt.setString(7, x.getAddress());
-				pstmt.setInt(8, x.getOrganId());
+				if(x.getOrganId() == 0)
+					pstmt.setString(8, null);
+				else 
+					pstmt.setInt(8, x.getOrganId());
 				/* 수정 */
 				pstmt.setString(9, x.getId());
 				pstmt.setString(10, x.getPassword());
@@ -103,8 +107,10 @@ public class DAOuser
 				pstmt.setString(13, x.getTel());
 				pstmt.setString(14, x.getEmail());
 				pstmt.setString(15, x.getAddress());
-				pstmt.setInt(16, x.getOrganId());
-				
+				if(x.getOrganId() == 0)
+					pstmt.setString(16, null);
+				else 
+					pstmt.setInt(16, x.getOrganId());
 				pstmt.executeUpdate();
 				pstmt.close();
 			}

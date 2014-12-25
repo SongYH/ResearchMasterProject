@@ -3,11 +3,12 @@ package Common;
 import java.util.Date;
 
 public class BudgetCareer {
-	
+	private int careerCnt;
 	private Date recordDate;//이력 기록일
 	private Budget budgetInfo;//사업비 예산 정보
 	
-	public BudgetCareer(Date recordDate, Budget budgetInfo) {
+	public BudgetCareer(int careerCnt, Date recordDate, Budget budgetInfo) {
+		this.careerCnt = careerCnt;
 		this.recordDate = recordDate;
 		this.budgetInfo = budgetInfo;
 	}
@@ -16,6 +17,13 @@ public class BudgetCareer {
 		return recordDate;
 	}
 
+	public int getCareerCnt() {
+		return careerCnt;
+	}
+
+	public void setCareerCnt(int careerCnt) {
+		this.careerCnt = careerCnt;
+	}
 	public void setRecordDate(Date recordDate) {
 		this.recordDate = recordDate;
 	}

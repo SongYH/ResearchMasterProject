@@ -41,11 +41,12 @@ public class DAObudgetCareer {
 			ResultSet result = pstmt.executeQuery();
 			while(result.next())
 			{
+				int cnt = result.getInt("careerCnt");
 				Date recordDate = new Date(result.getDate("recordDate").getTime());
 				int projectNumber = result.getInt("projectNumber");
 				int amount = result.getInt("amount");
 				Budget budgetInfo=new Budget(projectNumber,amount);
-				BudgetCareer budgetCareer=new BudgetCareer(recordDate,budgetInfo);
+				BudgetCareer budgetCareer=new BudgetCareer(cnt, recordDate,budgetInfo);
 				retBudgetCareerList.add(budgetCareer);
 			}
 			result.close();
@@ -70,7 +71,7 @@ public class DAObudgetCareer {
 	 * @return 저장성공여부
 	 */
 	public boolean saveList()
-	{
+	{	
 		ArrayList<BudgetCareer> saveList = BudgetCareerList.getInstance().getBudgetCareerList();
 		StringBuilder queryBuilder = new StringBuilder();
 		StringBuilder queryProjectUser = new StringBuilder();
@@ -79,23 +80,25 @@ public class DAObudgetCareer {
 			for(BudgetCareer x : saveList)
 			{
 				queryBuilder.delete(0, queryBuilder.length());
-				queryBuilder.append("INSERT INTO budgetcareer (recordDate, projectNumber, amount) ");
-				queryBuilder.append("VALUES (?, ?, ?) ");
+				queryBuilder.append("INSERT INTO budgetcareer (careerCnt, recordDate, projectNumber, amount) ");
+				queryBuilder.append("VALUES (?, ?, ?, ?) ");
 				queryBuilder.append("ON DUPLICATE KEY UPDATE " );
-				queryBuilder.append("recordDate=?, projectNumber = ?, amount = ?;");
+				queryBuilder.append("careerCnt=?, recordDate=?, projectNumber = ?, amount = ?;");
 				
 				String query = queryBuilder.toString();
 				
 				PreparedStatement pstmt = connection.prepareStatement(query);
 				
-				pstmt.setDate(1, new java.sql.Date(x.getRecordDate().getTime()));
-				pstmt.setInt(2, (x.getBudgetInfo()).getProjectNumber());
-				pstmt.setInt(3, (x.getBudgetInfo()).getAmount());
+				pstmt.setInt(1, x.getCareerCnt());
+				pstmt.setDate(2, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setInt(3, (x.getBudgetInfo()).getProjectNumber());
+				pstmt.setInt(4, (x.getBudgetInfo()).getAmount());
 				
 				//수정
-				pstmt.setDate(4, new java.sql.Date(x.getRecordDate().getTime()));
-				pstmt.setInt(5, (x.getBudgetInfo()).getProjectNumber());
-				pstmt.setInt(6, (x.getBudgetInfo()).getAmount());
+				pstmt.setInt(5, x.getCareerCnt());
+				pstmt.setDate(6, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setInt(7, (x.getBudgetInfo()).getProjectNumber());
+				pstmt.setInt(8, (x.getBudgetInfo()).getAmount());
 				
 				pstmt.executeUpdate();
 				pstmt.close();	

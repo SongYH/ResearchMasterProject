@@ -50,8 +50,6 @@
 		break;
 		
 	}
-	userList.add("id1");
-	userList.add("id2");
 	SimpleDateFormat transFormat = new SimpleDateFormat("yyyyMMdd");
 	Date Dregisterday = transFormat.parse(registerday);
 

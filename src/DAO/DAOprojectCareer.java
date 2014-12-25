@@ -46,6 +46,7 @@ private Connection connection;
 				Date recordDate = new Date(result.getDate("recordDate").getTime());
 				
 				//////////////////////Project Info/////////////////
+				int careerCnt = result.getInt("careerCnt");
 				String status = result.getString("status");
 				String type = result.getString("type");
 				String area = result.getString("area");
@@ -76,7 +77,7 @@ private Connection connection;
 				//////////////////////////////////////////////
 				Project projectInfo=new Project(status, type, area, projectNumber, projectName, leaderId, leaderName, organId, organName, registerDate, agreeYear, fileName, userIdList );
 				
-				ProjectCareer projectcareer=new ProjectCareer(recordDate,projectInfo);
+				ProjectCareer projectcareer=new ProjectCareer(careerCnt,recordDate,projectInfo);
 				retProjectCareerList.add(projectcareer);
 			}
 			result.close();
@@ -109,10 +110,10 @@ private Connection connection;
 			for(ProjectCareer x : saveList)
 			{
 				queryBuilder.delete(0, queryBuilder.length());
-				queryBuilder.append("INSERT INTO projectcareer (recordDate, status, type, area, projectNumber, projectName, leaderId, leaderName, organId, organName, registerDate, agreeYear, fileName) ");
-				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
+				queryBuilder.append("INSERT INTO projectcareer (careerCnt, recordDate, status, type, area, projectNumber, projectName, leaderId, leaderName, organId, organName, registerDate, agreeYear, fileName) ");
+				queryBuilder.append("VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?) ");
 				queryBuilder.append("ON DUPLICATE KEY UPDATE " );
-				queryBuilder.append("recordDate = ?, status = ?, type = ?, area = ?, projectNumber = ?, projectName = ?, leaderId = ?, leaderName = ?, ");
+				queryBuilder.append("careerCnt = ?, recordDate = ?, status = ?, type = ?, area = ?, projectNumber = ?, projectName = ?, leaderId = ?, leaderName = ?, ");
 				queryBuilder.append("organId = ?, organName = ?, registerDate = ?, agreeYear = ?, fileName = ?;");
 				
 				String query = queryBuilder.toString();
@@ -120,34 +121,36 @@ private Connection connection;
 				PreparedStatement pstmt = connection.prepareStatement(query);
 				
 				/* 등록 */
-				pstmt.setDate(1, new java.sql.Date(x.getRecordDate().getTime()));
-				pstmt.setString(2, (x.getProjectInfo()).getStatus());
-				pstmt.setString(3, (x.getProjectInfo()).getType());
-				pstmt.setString(4, (x.getProjectInfo()).getArea());
-				pstmt.setInt(5, (x.getProjectInfo()).getProjectNumber());
-				pstmt.setString(6, (x.getProjectInfo()).getProjectName());
-				pstmt.setString(7, (x.getProjectInfo()).getLeaderId());
-				pstmt.setString(8, (x.getProjectInfo()).getLeaderName());
-				pstmt.setInt(9, (x.getProjectInfo()).getOrganId());
-				pstmt.setString(10, (x.getProjectInfo()).getOrganName());
-				pstmt.setDate(11, new java.sql.Date((x.getProjectInfo()).getRegisterDate().getTime()));
-				pstmt.setInt(12, (x.getProjectInfo()).getAgreeYear());
-				pstmt.setString(13, (x.getProjectInfo()).getFileName());
+				pstmt.setInt(1, x.getCareerCnt());
+				pstmt.setDate(2, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setString(3, (x.getProjectInfo()).getStatus());
+				pstmt.setString(4, (x.getProjectInfo()).getType());
+				pstmt.setString(5, (x.getProjectInfo()).getArea());
+				pstmt.setInt(6, (x.getProjectInfo()).getProjectNumber());
+				pstmt.setString(7, (x.getProjectInfo()).getProjectName());
+				pstmt.setString(8, (x.getProjectInfo()).getLeaderId());
+				pstmt.setString(9, (x.getProjectInfo()).getLeaderName());
+				pstmt.setInt(10, (x.getProjectInfo()).getOrganId());
+				pstmt.setString(11, (x.getProjectInfo()).getOrganName());
+				pstmt.setDate(12, new java.sql.Date((x.getProjectInfo()).getRegisterDate().getTime()));
+				pstmt.setInt(13, (x.getProjectInfo()).getAgreeYear());
+				pstmt.setString(14, (x.getProjectInfo()).getFileName());
 				
 				/* 수정 */
-				pstmt.setDate(14, new java.sql.Date(x.getRecordDate().getTime()));
-				pstmt.setString(15, (x.getProjectInfo()).getStatus());
-				pstmt.setString(16, (x.getProjectInfo()).getType());
-				pstmt.setString(17, (x.getProjectInfo()).getArea());
-				pstmt.setInt(18, (x.getProjectInfo()).getProjectNumber());
-				pstmt.setString(19, (x.getProjectInfo()).getProjectName());
-				pstmt.setString(20, (x.getProjectInfo()).getLeaderId());
-				pstmt.setString(21, (x.getProjectInfo()).getLeaderName());
-				pstmt.setInt(22, (x.getProjectInfo()).getOrganId());
-				pstmt.setString(23, (x.getProjectInfo()).getOrganName());
-				pstmt.setDate(24, new java.sql.Date((x.getProjectInfo()).getRegisterDate().getTime()));
-				pstmt.setInt(25, (x.getProjectInfo()).getAgreeYear());
-				pstmt.setString(26, (x.getProjectInfo()).getFileName());
+				pstmt.setInt(15, x.getCareerCnt());
+				pstmt.setDate(16, new java.sql.Date(x.getRecordDate().getTime()));
+				pstmt.setString(17, (x.getProjectInfo()).getStatus());
+				pstmt.setString(18, (x.getProjectInfo()).getType());
+				pstmt.setString(19, (x.getProjectInfo()).getArea());
+				pstmt.setInt(20, (x.getProjectInfo()).getProjectNumber());
+				pstmt.setString(21, (x.getProjectInfo()).getProjectName());
+				pstmt.setString(22, (x.getProjectInfo()).getLeaderId());
+				pstmt.setString(23, (x.getProjectInfo()).getLeaderName());
+				pstmt.setInt(24, (x.getProjectInfo()).getOrganId());
+				pstmt.setString(25, (x.getProjectInfo()).getOrganName());
+				pstmt.setDate(26, new java.sql.Date((x.getProjectInfo()).getRegisterDate().getTime()));
+				pstmt.setInt(27, (x.getProjectInfo()).getAgreeYear());
+				pstmt.setString(28, (x.getProjectInfo()).getFileName());
 				/*
 				//사용자와 과제 묶기
 				for(String t : (x.getProjectInfo()).getUserIdList())
@@ -187,6 +190,5 @@ private Connection connection;
 		System.out.println("과제 이력 저장 완료 ");
 		return true;
 	}
-	
 
 }

@@ -44,7 +44,7 @@ public class DAOpreproject {
 				String area = result.getString("area");
 				String id = result.getString("id");
 				String fileName = result.getString("fileName");
-
+				
 				retUserList.add(new PreProject(projectNumber, organId, subjectName, status, type, area, id, fileName));
 			}
 			result.close();
@@ -80,9 +80,11 @@ public class DAOpreproject {
 				queryBuilder.append("organId = ?,  subjectName = ?, status = ?, type = ?, ");
 				queryBuilder.append("area = ?, id = ?, fileName = ?;");
 				
+				System.out.println(x.getOrganId() + "  " + x.getSubjectName() + " 저장");
+				
 				String query = queryBuilder.toString();
 				PreparedStatement pstmt = connection.prepareStatement(query);
-				
+				System.out.println(x.getOrganId() + "  "+ x.getSubjectName() );
 				pstmt.setInt(1, x.getOrganId());
 				pstmt.setString(2, x.getSubjectName());
 				pstmt.setString(3, x.getStatus());

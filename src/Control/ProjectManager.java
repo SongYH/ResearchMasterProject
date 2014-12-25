@@ -11,7 +11,9 @@ import Common.PreProject;
 import Common.Project;
 import Common.ProjectCareer;
 import Common.User;
+import Entity.BudgetCareerList;
 import Entity.BudgetList;
+import Entity.ProjectCareerList;
 import Entity.ProjectList;
 
 public class ProjectManager
@@ -143,6 +145,9 @@ public class ProjectManager
 	{
 		ProjectList projectList = ProjectList.getInstance();
 		projectList.regAddProject(p); // 프로젝트 등록
+		BudgetCareerList budgetCareerList = BudgetCareerList.getInstance(); 
+		ProjectCareerList projectCareerList = ProjectCareerList.getInstance(); 
+		
 		addBudget(b); // 사업비 등록
 
 		Date from = new Date();
@@ -153,8 +158,8 @@ public class ProjectManager
 		Date today = transFormat.parse(stringToday);
 
 		CareerManager careerManager = new CareerManager();
-		careerManager.addBudgetCareer(new BudgetCareer(today, b));
-		careerManager.addProjectCareer(new ProjectCareer(today, p));
+		careerManager.addBudgetCareer(new BudgetCareer(budgetCareerList.getBudgetCareerList().size()+1,today, b));
+		careerManager.addProjectCareer(new ProjectCareer(projectCareerList.getProjectCareerList().size()+1, today, p));
 	}
 
 	public ArrayList<String> reqResearcherIDList(int num)

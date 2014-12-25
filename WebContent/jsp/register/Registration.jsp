@@ -15,7 +15,7 @@
 	
 	ProjectManager projectM = new ProjectManager();
 	PreProject preProject = new PreProject();
-	
+
 	if(login_id != null)
 	{
 		preProject = projectM.reqSelectionEvaluationProject(login_id, "선정평가통과");
@@ -27,11 +27,11 @@
 </head>
 <body>
 	<%@include file="/jsp/common/Main.jsp"%>
-	<%if(loginId == null || loginId == "") 
+	<%if(login_id == null || login_id == "") 
 	{
 		response.sendRedirect("/ResearchMasterProject/jsp/common/login.jsp");
 	}else {
-		String permission = projectM.reqUserPermission(loginId);		// 권한을 아이디를 통해 가져옴 
+		String permission = projectM.reqUserPermission(login_id);		// 권한을 아이디를 통해 가져옴 
 		if(permission.equals("과제책임자"))		// 정산담당자 일때
 		{
 			if(preProject == null)

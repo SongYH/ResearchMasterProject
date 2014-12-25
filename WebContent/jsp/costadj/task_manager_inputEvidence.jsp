@@ -32,9 +32,9 @@
 			<%=bg.getAmount()%>
 			<br> <input type="file" name="upfile" size="20">(파일의 용량
 			제한 : 20M) <br> 사업비 총 집행금액 : <input type=text
-				name="evidence_amount" value="" size=20> <input type=button
-				value="사업비 집행금액 입력" onClick="evidenceInputCheck()"
-				OnKeypress="onlyNumber()"><br>
+				name="evidence_amount" value="" size=20 
+				OnKeypress="onlyNumber()"> <input type=button
+				value="사업비 집행금액 입력" onClick="evidenceInputCheck()"><br>
 
 		</form>
 	</div>

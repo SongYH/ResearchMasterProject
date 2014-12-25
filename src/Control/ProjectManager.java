@@ -10,6 +10,7 @@ import Common.BudgetCareer;
 import Common.PreProject;
 import Common.Project;
 import Common.ProjectCareer;
+import Common.User;
 import Entity.BudgetList;
 import Entity.ProjectList;
 
@@ -112,6 +113,18 @@ public class ProjectManager
 		return um.reqUserId(userName, socialNumber);
 	}
 
+	public User reqUserInfo(String id)
+	{
+		UserManage userM = new UserManage();
+		return userM.reqUser(id);
+	}
+	
+	public String reqOrganName(int organId)
+	{
+		UserManage userM = new UserManage();
+		return userM.reqOrganImformation(organId);
+	}
+	
 	// 사업비 관련///
 	public void addBudget(Budget b)
 	{
@@ -149,5 +162,13 @@ public class ProjectManager
 		ProjectList projectList = ProjectList.getInstance();
 		return projectList.getResearcherIDList(num);
 	}
-
+	
+	public String reqUserPermission(String loginId)
+	{
+		PermissionManager perm = new PermissionManager();		// 권한을 확인하기위한 권한관리객체 생성
+		String permission = perm.confirmUserPermission(loginId);			// 권한을 아이디를 통해 가져옴 
+		
+		return permission;
+	}
+	
 }

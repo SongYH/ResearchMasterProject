@@ -46,14 +46,10 @@ if (loginId != null)
 					<li><a href="/ResearchMasterProject/jsp/costadj/_input_calculate.jsp">정산 입력</a>
 					<li><a href="/ResearchMasterProject/jsp/costadj/_checkCalculation.jsp">정산 결과 조회</a>
 				</ul>
-<<<<<<< HEAD
 			<li><a href="#">이력관리</a>
 				<ul>
-					<li><a href="/ResearchMasterProject/jsp/costadj/ProjectCareerSearch.jsp">이력통합조회</a>
+					<li><a href="/ResearchMasterProject/jsp/careermng/ProjectCareerSearch.jsp">이력통합조회</a>
 				</ul>
-=======
-			<li><a href="/ResearchMasterProject/jsp/careermng/ProjectCareerSearch.jsp">이력관리</a>
->>>>>>> origin/master
 			<li><a href="#">관리자메뉴</a>
 				<ul>
 					<li><a href="#" >사용자관리</a></li>

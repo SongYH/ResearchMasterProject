@@ -29,7 +29,7 @@
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
 <div id="contents">
-	<a href="/ResearchMasterProject/jsp/expmng/PageSearchExpert.jsp">전문가검색으로 이동</a>
+	<a href="/ResearchMasterProject/jsp/expmng/PageSearchExpert.jsp">전문가 검색</a>
 	<h1>전문가관리</h1>
 <% 	if(nullFlag)
 	{

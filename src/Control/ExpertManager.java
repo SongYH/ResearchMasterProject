@@ -45,4 +45,12 @@ public class ExpertManager {
 		ExpertList expertList = ExpertList.getInstance();
 		return expertList.getRandomExperts(field);
 	}
+	
+	public String reqUserPermission(String loginId)
+	{
+		PermissionManager perm = new PermissionManager();		// 권한을 확인하기위한 권한관리객체 생성
+		String permission = perm.confirmUserPermission(loginId);			// 권한을 아이디를 통해 가져옴 
+		
+		return permission;
+	}
 }

@@ -15,7 +15,7 @@
 	<%
 		ProjectList pl = ProjectList.getInstance();			// 과제관리 객체를 생성한다 
 		ProjectManager pm = new ProjectManager();
-		ArrayList<Project> prList = pm.reqProjectList("상태","증빙자료입력");	// 증빙자료가 입력된 과제 목록을 요청한다.
+		ArrayList<Project> prList = pm.reqProjectList("상태","정산완료");	// 정산이 완료된 과제 목록을 요청한다.
 	%>
 
 	<form name=selectProject method=post action="calculation.js">

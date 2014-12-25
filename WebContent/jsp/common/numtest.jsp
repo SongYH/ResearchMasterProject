@@ -6,6 +6,9 @@
 <HEAD>
 <TITLE>사업비증거자료 beans</TITLE>
 </HEAD>
+<script language=JavaScript src="../../js/calculation/evidence.js"
+	charset="UTF-8"></script>
+
 <BODY>
 	<%@include file="/jsp/common/Main.jsp"%>
 	<%
@@ -19,6 +22,21 @@
 	%>
 	<div>
 		<form name=evidenceInput method=post action="evidence.js">
+		<input type="text" onkeydown="return showKeyCode(event)">
+		   <script>
+        function showKeyCode(event) {
+            event = event || window.event;
+            var keyID = (event.which) ? event.which : event.keyCode;
+            if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) )
+            {
+                return;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    </script>
 			<input type=hidden name="select_project_number"
 				value=<%=selectProjectNumber%>>
 
@@ -30,45 +48,10 @@
 			<br> <input type="file" name="upfile" size="20">(파일의 용량
 			제한 : 20M) <br> 사업비 총 집행금액 : <input type=text
 				name="evidence_amount" value="" size=20 
-				OnKeydown="return showKeyCode(event)"> <input type=button
+				OnKeypress="onlyNumber()"> <input type=button
 				value="사업비 집행금액 입력" onClick="evidenceInputCheck()"><br>
 
 		</form>
 	</div>
 </BODY>
-<script>
-        function showKeyCode(event) {
-            event = event || window.event;
-            var keyID = (event.which) ? event.which : event.keyCode;
-            if( ( keyID >=48 && keyID <= 57 ) || ( keyID >=96 && keyID <= 105 ) || keyID == 8 || keyID == 46
-            		|| keyID == 37 || keyID == 39)
-            {
-                return;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        
-        function evidenceInputCheck() {
-        	if (document.evidenceInput.evidence_amount.value == "") {
-        		alert("집행금액을 입력하세요.");
-        		document.evidenceInput.evidence_amount.focus();
-        		return;
-        	}
-
-        	document.evidenceInput.action = "control_inputEvidence.jsp";
-        	document.evidenceInput.method = "post";
-        	document.evidenceInput.submit();
-        }
-
-        function evidenceControlCheck() {
-
-        	document.evidenceControl.action = "task_manager_evidenceResult.jsp";
-        	document.evidenceControl.method = "post";
-        	document.evidenceControl.submit();
-        }
- </script>
-
 </HTML>

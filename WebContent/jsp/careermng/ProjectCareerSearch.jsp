@@ -1,4 +1,5 @@
 
+<%@page import="Control.ProjectManager"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@ page import="java.util.ArrayList" %>
@@ -15,6 +16,25 @@
 </head>
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
+<%
+	ProjectManager projectManager = new ProjectManager();
+	if(loginId == null || loginId == "") 
+	{
+		 out.println("<script>alert('로그인이 필요합니다.')</script>");
+		response.sendRedirect("/ResearchMasterProject/jsp/common/login.jsp");
+	}else { // 로그인 되있는 상태면
+		String permission = projectManager.reqUserPermission(loginId);		// 권한을 아이디를 통해 가져옴 
+		if(permission.equals("과제담당자") || permission.equals("과제책임자") || permission.equals("참여연구원"))
+		{
+		} // 과제책임자 or 참여연구원 or 과제책임자
+
+		else // 과제담당자  책임자 둘다 아닐떄
+	 	{ // 팝업창 띄우고 Home 화면으로 가기
+			 out.println("<script>alert('권한이 없습니다.'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
+	 	}
+	} 
+	
+%>
 <div id="contents">
 	<h1 style="text-align:center;">과제 이력 검색</h1>
 	<form action="/ResearchMasterProject/jsp/careermng/ProjectCareerSearch.jsp" method="post" name="searchInputs">
@@ -25,13 +45,24 @@
 				<br>	
 				과제 상태   :
 				<select name="status">
+<!--
+ 과제상태
+-등록승인
+-중간평가계획
+-중간평가완료
+-증빙자료입력
+-정산완료
+-최종평가계획
+-최종평가완료 
+-->
 						<option value="모두" selected>모두</option>
-						<option value="등록완료">등록완료</option>
+						<option value="등록승인">등록승인</option>
 						<option value="중간평가계획">중간평가계획</option>
 						<option value="중간평가완료">중간평가완료</option>
+						<option value="증빙자료입력">증빙자료입력</option>
+						<option value="정산완료">정산완료</option>
 						<option value="최종평가완료">최종평가계획</option>
 						<option value="최종평가완료">최종평가완료</option>
-						<option value="정산">정산</option>
 				</select>
 				<br>	
 				과제 번호 : <input type="text" name="projectNumber" placeholder="8자리 숫자" />

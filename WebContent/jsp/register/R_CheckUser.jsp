@@ -28,17 +28,17 @@ function setId()
 		opener.document.projectInput.workerId2.value="<%=userID%>";
 		self.close();
 	}
-	if(num == 3)
+	if(<%=num%> == 3)
 	{
 		opener.document.projectInput.workerId3.value="<%=userID%>";
 		self.close();
 	}
-	if(num == 4)
+	if(<%=num%> == 4)
 	{
 		opener.document.projectInput.workerId4.value="<%=userID%>";
 		self.close();
 	}
-	if(num == 5)
+	if(<%=num%> == 5)
 	{
 		opener.document.projectInput.workerId5.value="<%=userID%>";
 		self.close();

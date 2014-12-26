@@ -6,7 +6,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>사업비정산 완료 beans</TITLE>
+<TITLE>사업비정산 완료</TITLE>
 </HEAD>
 <script language=JavaScript src="../../js/calculation/calculation.js"></script>
 
@@ -15,10 +15,6 @@
 	<div>
 		<%
 			request.setCharacterEncoding("UTF-8");
-		%>
-
-		<h3>사업비 정산완료</h3>
-		<%
 			String strProjectNumber = request
 					.getParameter("select_project_number"); // 선택된 과제번호 
 			int selectProjectNumber = Integer.parseInt(strProjectNumber); // 선택된 과제번호 integer형으로 변환

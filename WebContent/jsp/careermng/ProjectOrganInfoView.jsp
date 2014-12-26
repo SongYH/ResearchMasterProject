@@ -1,5 +1,5 @@
+<%@page import="Common.Organ"%>
 <%@page import="Control.UserManage"%>
-<%@page import="Common.User"%>
 <%@page import="Control.CareerManager.ProjectCareerUnityInfo"%>
 <%@page import="java.text.DateFormat"%>
 <%@page import="java.text.SimpleDateFormat"%>
@@ -56,16 +56,16 @@
 <% 
 	//UserManager userManaser= new UserManager();
 	UserManage userManaser= new UserManage();
-	ArrayList<User> viewUserInfoList =  userManaser.requserImformation(projectUserIDList);
+	ArrayList<Organ> viewOrganInfoList =  userManaser.requserOrganlist(projectUserIDList);
 	
 %>
 
 <!-- 여기서부터는 사용자에게 보여질 유저 정보 목록입니다. -->
 
-<% 	if(viewUserInfoList == null)
+<% 	if(viewOrganInfoList == null)
 	{
 %>
-		<h2 style="text-align:center;">참여 구성원의 정보목록이 없습니다.</h2>
+		<h2 style="text-align:center;">참여 기관의 정보목록이 없습니다.</h2>
 <%	}
 	else
 	{
@@ -73,33 +73,25 @@
 %>
 	<table style=margin:auto;>
 		<tr>
-			<th>이름</th>
-			<th>ID</th>
-			<th>주민번호(앞)</th>
-			<th>주소</th>
-			<th>전화번호</th>
-			<th>email</th>
-			<th>기관ID</th>
+			<th>참여 기관명</th>
+			<th>참여 기관ID</th>
+			<th>대표자</th>
+			<th>지역코드</th>
+			<th>FAX</th>
 		</tr>
 		
 <%
-		for(User x : viewUserInfoList)
+		for(Organ x : viewOrganInfoList)
 		{
 			
 		
 %>
 			<tr>
-				<td><%= x.getName() %></td>
-				<td><%= x.getId() %></td>
-				<td><%= x.getSocialNumber() %></td>
-				<td><%= x.getAddress() %></td>
-				<!-- 직책 넣어야 함..x.get직책() -->
-				<td><%= x.getTel() %></td>
-				<td><%= x.getEmail() %></td>
+				<td><%= x.getOrganName() %></td>
 				<td><%= x.getOrganId() %></td>
-				<td>
-				
-  </td>
+				<td><%= x.getPresident() %></td>
+				<td><%= x.getRegionCode() %></td>
+				<td><%= x.getFax() %></td>
 			</tr>
 <%		}
 %>
@@ -110,7 +102,6 @@
 		}
 	}
 %>
-</div>
 
 </body>
 </html>

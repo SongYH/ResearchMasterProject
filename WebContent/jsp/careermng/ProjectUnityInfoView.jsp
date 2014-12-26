@@ -110,29 +110,16 @@ if(viewElementsInfo.getBudgetCareer()==null)
 
 <tr>
 <td>
-<h1 style="text-align:left;">평가 정보</h1>
+<h1 style="text-align:left;">중간 평가 정보</h1>
 -중간 평가 결과-<br>
 <%
-if(viewElementsInfo.getFinEvalResult()==null)
+if(viewElementsInfo.getMidEvalResult()==null)
 	%>정보 없음.<br><%
 	else
 	{
 	%>
-	중간 평가 결과 :<%=viewElementsInfo.getFinEvalResult().getResult() %> <br>
-	중간 평가 파일:<%=viewElementsInfo.getFinEvalResult().getFileName() %> <br>
-	<%
-	}
-%>
-<br>
--최종 평가 결과-<br>
-<%
-if(viewElementsInfo.getFinEvalResult()==null)
-	%>정보 없음.<br><%
-	else
-	{
-	%>
-	최종 평가 결과 :<%=viewElementsInfo.getFinEvalResult().getResult() %> <br>
-	최종 평가 파일:<%=viewElementsInfo.getFinEvalResult().getFileName() %> <br>
+	중간 평가 결과 :<%=viewElementsInfo.getMidEvalResult().getResult() %> <br>
+	중간 평가 결과 파일:<%=viewElementsInfo.getMidEvalResult().getFileName() %> <br>
 	<%
 	}
 %>
@@ -166,8 +153,8 @@ if(viewElementsInfo.getClawback()==null)
 	{
 	%>
 	환급 총액 :<%=viewElementsInfo.getClawback().getAmount() %> <br>
-	환급 비율:<%=viewElementsInfo.getClawback().getRate() %> <br>
-	환급일:<%=viewElementsInfo.getClawback().getDate() %> <br>
+	환급 결정 비율:<%=viewElementsInfo.getClawback().getRate() %> <br>
+	환급 선정일:<%=viewElementsInfo.getClawback().getDate() %> <br>
 	<%
 	}
 %>
@@ -175,6 +162,25 @@ if(viewElementsInfo.getClawback()==null)
 </td>
 </tr>
 
+<tr>
+<td>
+<h1 style="text-align:left;">최종 평가 정보</h1>
+-최종 평가 결과-<br>
+<%
+if(viewElementsInfo.getFinEvalResult()==null)
+	%>정보 없음.<br><%
+	else
+	{
+	%>
+	최종 평가 결과 :<%=viewElementsInfo.getFinEvalResult().getResult() %> <br>
+	최종 평가 결과 파일:<%=viewElementsInfo.getFinEvalResult().getFileName() %> <br>
+	<%
+	}
+%>
+<br>
+</td>
+</tr>
+<br>
 </table>
 
 </div>

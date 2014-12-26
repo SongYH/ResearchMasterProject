@@ -161,15 +161,19 @@ public class UserList
 
 	public ArrayList<User> getuserImformation(ArrayList<String> workerid) // get사용자정보
 	{
+		System.out.println(workerid.get(0) + " 김성욱");
 		ArrayList<User> arr = new ArrayList<User>();
-		for (int i = 0; i < userList.size(); i++)
+		for (int i = 0; i < workerid.size(); i++)
 		{
-			for (int j = 0; j < workerid.size(); j++)
+			for (int j = 0; j < userList.size(); j++)
 			{
-				if (userList.get(i).getId().equals(workerid.get(j)))
+				if (userList.get(j).getId().equals(workerid.get(i)))
 					arr.add(userList.get(j));
 			}
 		}
+		System.out.println(arr.get(0).getId() + " 김성욱");
+		System.out.println(arr.get(1).getId() + " 김성욱");
+		
 		return arr;
 	}
 

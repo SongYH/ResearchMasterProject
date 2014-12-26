@@ -7,6 +7,7 @@ import Common.BudgetCareer;
 import Common.Calculate;
 import Common.Clawback;
 import Common.FinEvalResult;
+import Common.MidEvalResult;
 import Common.Organ;
 import Common.ProjectCareer;
 import Common.User;
@@ -21,23 +22,23 @@ public class CareerManager {
 	{
 		ProjectCareer projectCareer;
 		BudgetCareer budgetCareer;
-		//MidEvalResult는 없음...
+		MidEvalResult midEvalResult;
 		FinEvalResult finEvalResult;
 		Calculate calculate;
 		Clawback clawback;
 		
-		public ProjectCareerUnityInfo(ProjectCareer projectCareer, BudgetCareer budgetCareer, FinEvalResult finEvalResult, Calculate calculate,Clawback clawback)
+		public ProjectCareerUnityInfo(ProjectCareer projectCareer, BudgetCareer budgetCareer,MidEvalResult midEvalResult, FinEvalResult finEvalResult, Calculate calculate,Clawback clawback)
 		{
 			this.projectCareer = projectCareer;
 			this.budgetCareer = budgetCareer;
-			//this.midEvalResult = midEvalResult;
+			this.midEvalResult = midEvalResult;
 			this.finEvalResult = finEvalResult;
 			this.calculate = calculate;
 			this.clawback = clawback;
 		}
 		public ProjectCareer getProjectCareer(){return projectCareer;}
 		public BudgetCareer getBudgetCareer(){return budgetCareer;}
-		//public User getMidEvalResult(){return midEvalResult;}
+		public MidEvalResult getMidEvalResult(){return midEvalResult;}
 		public FinEvalResult getFinEvalResult(){return finEvalResult;}
 		public Calculate getCalculate(){return calculate;}
 		public Clawback getClawback(){return clawback;}
@@ -62,7 +63,7 @@ public class CareerManager {
 		ProjectCareerList projectCareerList = ProjectCareerList.getInstance();	
 		BudgetCareerList budgetCareerList = BudgetCareerList.getInstance();
 		
-		//MidEvalManager midEvalManager = new MidEvalManager();	
+		MidEvalManager midEvalManager = new MidEvalManager();	
 		FinEvalManager finEvalManager = new FinEvalManager();	
 		CalculationManager calculationManager=new CalculationManager();
 
@@ -71,12 +72,12 @@ public class CareerManager {
 		ProjectCareer projectCareerInfo=projectCareerList.getProjectCareer(recordDate, projectNumber);
 		BudgetCareer budgetCareerInfo=budgetCareerList.getBudgetCareer(recordDate, projectNumber);
 		
-		//MidEvalResult midEvalResultInfo=midEvalManager.requestMidEvalResult(projectNumber);
+		MidEvalResult midEvalResultInfo=midEvalManager.requestMidEvalResult(projectNumber);
 		FinEvalResult finEvalResultInfo=finEvalManager.requestFinEvalResult(projectNumber);
 		Calculate calculateInfo=calculationManager.requestCalculate(projectNumber);
 		Clawback clawbackInfo=calculationManager.requestClawback(projectNumber);
 		
-		ProjectCareerUnityInfo projectCareerUnityInfo= new ProjectCareerUnityInfo(projectCareerInfo,budgetCareerInfo,finEvalResultInfo,calculateInfo,clawbackInfo);
+		ProjectCareerUnityInfo projectCareerUnityInfo= new ProjectCareerUnityInfo(projectCareerInfo,budgetCareerInfo,midEvalResultInfo,finEvalResultInfo,calculateInfo,clawbackInfo);
 		return projectCareerUnityInfo;
 		
 	}
@@ -84,12 +85,11 @@ public class CareerManager {
 	
 	public ArrayList<Organ> requestProjectOrganInfo(ArrayList<String> workerid)
 	{	
-		/*
+		
 		UserManage userManage = new UserManage();
-		ArrayList<Organ> organImformationList=userManage.reqorganImformation(workerid);
+		ArrayList<Organ> organImformationList=userManage.requserOrganlist(workerid);
 		return organImformationList;
-		*/
-		return null;
+
 	
 	}
 	

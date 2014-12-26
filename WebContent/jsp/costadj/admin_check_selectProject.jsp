@@ -6,7 +6,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>사업비 정산 조회 beans</TITLE>
+<TITLE>사업비 정산 조회</TITLE>
 </HEAD>
 <script language=JavaScript src="../../js/calculation/calculation.js"></script>
 <BODY>

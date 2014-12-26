@@ -4,7 +4,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>사업비증거자료 beans</TITLE>
+<TITLE>사업비증거자료 입력 </TITLE>
 </HEAD>
 <BODY>
 	<%@include file="/jsp/common/Main.jsp"%>
@@ -21,8 +21,6 @@
 		<form name=evidenceInput method=post action="evidence.js">
 			<input type=hidden name="select_project_number"
 				value=<%=selectProjectNumber%>>
-
-			<h3>사업비 증거자료 입력 beans</h3>
 			선택된 과제번호 :
 			<%=selectProjectNumber%>
 			<br> 사업비예산 신청액 :

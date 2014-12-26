@@ -44,8 +44,8 @@
 	expert.setField(field);
 	
 	expertmanager.requestAddExpert(expert);
-	
-	response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");
+	out.println("<script>alert('전문가 등록이 완료되었습니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>");
+//	response.sendRedirect("/ResearchMasterProject/jsp/common/Home.jsp");
 %>
 </body>
 </html>

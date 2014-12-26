@@ -5,7 +5,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>사업비정산입력 beans</TITLE>
+<TITLE>사업비정산입력</TITLE>
 </HEAD>
 <BODY>
 <%@include file="/jsp/common/Main.jsp"%>
@@ -20,7 +20,6 @@
 			Evidence ev = cm.requestEvidence(selectProjectNumber);			// 과제번호에 해당하는 사업비증빙자료정보 요청 
 	%>
 	<form name=calculationInput method=post action="calculation.js">
-		<h3>사업비 정산 결과 beans</h3>
 		선택된 과제번호 :
 		<%=selectProjectNumber%>
 		<br> 사업비예산 신청액 :

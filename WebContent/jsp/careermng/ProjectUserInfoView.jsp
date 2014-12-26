@@ -97,9 +97,6 @@
 				<td><%= x.getTel() %></td>
 				<td><%= x.getEmail() %></td>
 				<td><%= x.getOrganId() %></td>
-				<td>
-				
-  </td>
 			</tr>
 <%		}
 %>
@@ -110,7 +107,7 @@
 		}
 	}
 %>
-</div>
+
 
 </body>
 </html>

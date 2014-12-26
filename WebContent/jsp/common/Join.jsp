@@ -74,7 +74,7 @@ function showKeyCode(event) {
 		<table align="center">
 		<tr><td>사용아이디</td><td><input type="text" name="id" /></td>
 		<td><input type="button" name="idButton" value="중복확인" onclick="checkId(this.form)"/></td></tr>
-		<tr><td>비밀번호</td><td><input type="text" name="password" /></td></tr>
+		<tr><td>비밀번호</td><td><input type="password" name="password" /></td></tr>
 		<tr><td>사용자이름</td><td><input type="text" name="name" /></td></tr>
 		<tr><td>주민등록번호</td><td><input type="text" name="socialNumber" OnKeydown="return showKeyCode(event)"/></td></tr>
 		<tr><td>전화번호</td><td><input type="text" name="tel" OnKeydown="return showKeyCode(event)"/></td></tr>

@@ -20,7 +20,7 @@
     	{
 	%>
 		<div id="contents">
-		<a href="/ResearchMasterProject/jsp/expmng/SearchExpert.jsp">전문가 추가</a>
+		<a href="/ResearchMasterProject/jsp/expmng/PageSearchExpert_User.jsp">전문가 추가</a>
 		<h1>전문가 검색</h1>
 		<form action="/ResearchMasterProject/jsp/expmng/PageViewExpert.jsp" method="post">
 			<table style="width:30%; margin-left:40%; margin-right:30%;">

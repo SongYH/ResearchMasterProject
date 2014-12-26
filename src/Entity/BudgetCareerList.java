@@ -38,8 +38,18 @@ public class BudgetCareerList {
 		
 		for (BudgetCareer b : budgetCareerList) {
 			
-			if( (b.getRecordDate()).compareTo(date) >= 0)
+			if( (b.getRecordDate()).compareTo(date) >= 0 && (b.getBudgetInfo()).getProjectNumber()==projectNumber)
+			{
+				if(CloseBudgetCareer==null)
+				{
+					CloseBudgetCareer=b;
+				return CloseBudgetCareer;
+				}
+				else
+				{
 				break;
+				}
+			}
 			
 			if ( (b.getRecordDate()).compareTo(date)<=0 && (b.getBudgetInfo()).getProjectNumber()==projectNumber )
 				CloseBudgetCareer=b;

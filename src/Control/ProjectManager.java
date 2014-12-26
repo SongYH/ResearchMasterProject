@@ -99,6 +99,7 @@ public class ProjectManager
 	public Project reqProjectSearchID(String id)
 	{
 		ProjectList projectList = ProjectList.getInstance();
+		System.out.println(projectList.getProjectSearchID(id) +"  송");
 		return projectList.getProjectSearchID(id);
 	}
 	

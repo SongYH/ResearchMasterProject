@@ -11,6 +11,7 @@
 <%
 	ProjectManager projectM = new ProjectManager();
 	ArrayList<Project> projectList = new ArrayList<Project>();
+	System.out.println(projectList.size()+" sss");
 %>
 </head>
 <body>
@@ -22,7 +23,8 @@
 		String permission = projectM.reqUserPermission(loginId);		// 권한을 아이디를 통해 가져옴 
 		if(permission.equals("과제책임자"))		// 정산담당자 일때
 		{
-			projectList.add(projectM.reqProjectSearchID(loginId));
+			if(projectM.reqProjectSearchID(loginId) != null)
+				projectList.add(projectM.reqProjectSearchID(loginId));
 		} // 과제책임자 일때 if 문 끝
 		else if(permission.equals("과제담당자"))
 		{
@@ -30,9 +32,16 @@
 		}
 		else // 과제담당자  책임자 둘다 아닐떄
 	 	{ // 팝업창 띄우고 Home 화면으로 가기
-			 out.println("<script>alert('과제책임자 또는 과제담당자가 아닙니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
+			 out.println("<script> alert('과제책임자 또는 과제담당자가 아닙니다'); location.href = '/ResearchMasterProject/jsp/common/Home.jsp'; </script>"); 
 	 	}
-	} %>
+	} 
+	
+	if(projectList.size() == 0){
+	%>
+		<hr /> <p align="center">조회할 과제가 없습니다.</p> <hr />
+	<%
+	}
+	else{%>
 	<hr /> <p align="center">과제조회</p> <hr />
 	<form name=selectProject method=post action="calculation.js">
 		<table>
@@ -64,5 +73,6 @@
 			%>
 		</table>
 	</form>
+	<%} %>
 </body>
 </html>

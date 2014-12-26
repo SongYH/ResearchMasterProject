@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import Common.Permission;
 import Common.User;
 import Common.UserPermission;
+import Entity.BudgetList;
 import Entity.PermissionList;
 import Entity.UserList;
 import Entity.UserPermissionList;
@@ -25,7 +26,12 @@ public class PermissionManager
 		public User getUserInfo(){return userInfo;}
 		public String getPermissionName(){return permissionName;}
 	}
-	
+	public void addUserPermission(UserPermission up)
+	{ 
+		UserPermissionList userPermissionList = UserPermissionList.getInstance();
+		
+		userPermissionList.addUserPermission(up);
+	}
 	//사용자 권한확인
 	public String confirmUserPermission(String id)
 	{

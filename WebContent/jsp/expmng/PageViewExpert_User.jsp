@@ -36,7 +36,7 @@
 <body>
 <%@include file="/jsp/common/Main.jsp"%>
 <div id="contents">
-	<a href="/ResearchMasterProject/jsp/expmng/SearchExpert.jsp">전문가 추가</a>
+	<a href="/ResearchMasterProject/jsp/expmng/PageSearchExpert_User.jsp">전문가 추가</a>
 	<h1>전문가 추가</h1>
 <% 	if(nullFlag)
 	{
@@ -70,7 +70,7 @@
 %>
 	</table>
 	
-		<form action="/ResearchMasterProject/jsp/expmng/InputExpert.jsp" method="post">
+		<form action="/ResearchMasterProject/jsp/expmng/PageInputExpert.jsp" method="post">
 		<table style="width:30%; margin-left:40%; margin-right:30%;">
 			<tr>
 				<td>추가할 전문가 ID입력 :

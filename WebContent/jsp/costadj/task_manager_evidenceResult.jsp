@@ -7,7 +7,7 @@
 
 <HTML>
 <HEAD>
-<TITLE>사업비증거입력 완료 beans</TITLE>
+<TITLE>사업비증거입력 완료</TITLE>
 </HEAD>
 
 <BODY>
